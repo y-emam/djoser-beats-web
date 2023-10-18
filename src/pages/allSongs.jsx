@@ -1,15 +1,3 @@
-// import Navbar from "../components/navbar";
-
-// function SongPage() {
-//   return (
-//     <div className="song-page">
-//       <Navbar />
-
-//     </div>
-//   );
-// }
-
-// export default SongPage;
 import "./allSongs.css";
 import Navbar from "../components/navbar";
 import { useEffect, useState } from "react";
@@ -33,7 +21,7 @@ const AllSongs = () => {
           <div className="play-button">{song.songUrl}</div>
           <div className="release-date"></div>
           <div className="duration"></div>
-          <Link to={"/"} className="show-more">
+          <Link to={"/songDetails"} className="show-more">
             ShowMore
           </Link>
         </div>
