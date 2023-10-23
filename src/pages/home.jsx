@@ -1,7 +1,8 @@
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import "./home.css";
+import ContactForm from "../components/contactForm";
 
 function Home() {
   return (
@@ -15,7 +16,8 @@ function Home() {
           <Link to={"songs"}>Show Beats</Link>
         </div>
       </div>
-      <div></div>
+      {/* <SongList /> */}
+      <ContactForm />
       <Footer />
     </div>
   );
