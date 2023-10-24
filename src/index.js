@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import PlayerBar from "./controllers/playSong";
+import PlayerBar from "./components/playBar";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

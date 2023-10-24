@@ -27,28 +27,25 @@
 
 .song-list .name {
   cursor: pointer;
+  color: white;
+}
+
+.song-list .show-more {
+  cursor: pointer;
+  background-color: #643c92;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px black;
+  color: var(--main-dark);
+  font-weight: bold;
+  color: var(--main-light);
 }
 
 .song-list .name:hover {
   text-decoration: underline;
 }
 
-.player-bar {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  background-color: var(--main-dark);
-  height: 5rem;
-  align-items: center;
-  padding: 8px 0;
-  text-align: center;
-}
-
-.player-bar img {
-  width: 4rem;
-  height: 4rem;
-  object-fit: cover;
+.song-list .show-more:hover {
+  color: white;
+  text-decoration: none;
 }

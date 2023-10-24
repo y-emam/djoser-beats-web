@@ -1,15 +1,14 @@
 import { useState } from "react";
 import "./songList.css";
-import { routeToPage } from "../controllers/routeing";
-import PlayerBar from "../controllers/playSong";
 import { Link } from "react-router-dom";
+import playSong from "../controllers/playSong";
 
 function SongsList() {
   const [songs, setsongs] = useState([
     { name: "motto", bpm: 112, imageName: "motto.jpg", duration: "2:48" },
     { name: "fatrat", bpm: 112, imageName: "fatrat.jpg", duration: "2:48" },
     {
-      name: "stressed",
+      name: "stressed out",
       bpm: 112,
       imageName: "stressed.png",
       duration: "2:48",
@@ -18,19 +17,22 @@ function SongsList() {
 
   const songsComponents = songs.map((song) => {
     return (
-      <div className="song-item" key={song.name}>
+      <div
+        className="song-item"
+        key={song.name}
+        onClick={() => {
+          playSong(song);
+        }}
+      >
         <img src={require(`../assets/${song.imageName}`)} alt="song-pic" />
-        <p
-          onClick={() => {
-            routeToPage("/songDetails");
-          }}
-          className="name"
-        >
-          {song.name}
-        </p>
+        <Link to={"/songDetails"} className="name">
+          <p>{song.name}</p>
+        </Link>
         <p className="duration">{song.duration}</p>
         <p className="bpm">{song.bpm}</p>
-        <Link to={"/songDetails"}>Show More</Link>
+        <Link to={"/songDetails"} className="show-more">
+          Show More
+        </Link>
       </div>
     );
   });
