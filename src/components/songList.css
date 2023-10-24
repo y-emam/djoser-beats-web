@@ -24,3 +24,11 @@
   box-shadow: 2px 2px 12px 0 rgba(70, 70, 70, 0.685),
     0 6px 20px 0 rgba(70, 70, 70, 0.2);
 }
+
+.song-list .name {
+  cursor: pointer;
+}
+
+.song-list .name:hover {
+  text-decoration: underline;
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./songList.css";
 import { routeToPage } from "../controllers/routeing";
+import Player from "../controllers/playSong";
 
 function SongsList() {
   const [songs, setsongs] = useState([
@@ -18,7 +19,14 @@ function SongsList() {
     return (
       <div className="song-item" key={song.name}>
         <img src={require(`../assets/${song.imageName}`)} alt="song-pic" />
-        <p className="name">{song.name}</p>
+        <p
+          onClick={() => {
+            routeToPage("/songDetails");
+          }}
+          className="name"
+        >
+          {song.name}
+        </p>
         <p className="duration">{song.duration}</p>
         <p className="bpm">{song.bpm}</p>
         <button
@@ -42,6 +50,7 @@ function SongsList() {
         <p> </p>
       </div>
       {songsComponents}
+      <Player />
     </div>
   );
 }
