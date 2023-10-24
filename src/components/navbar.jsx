@@ -33,7 +33,7 @@ function Navbar() {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to={"/songs"}>
-              SONGS
+              BEATS
             </Link>
           </li>
           <li className="nav-item">

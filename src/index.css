@@ -11,6 +11,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-dark);
+  color: var(--main-light);
 }
 
 code {
@@ -21,7 +23,6 @@ code {
 /* navbar */
 .navbar {
   background-color: var(--main-dark);
-  width: 100vw;
 }
 .navbar .nav-item {
   font-weight: bold;
@@ -32,4 +33,8 @@ code {
   border-radius: 50%;
   overflow: "hidden";
   border-width: 3;
+}
+
+button {
+  cursor: pointer;
 }
