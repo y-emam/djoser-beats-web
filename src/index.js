@@ -4,12 +4,23 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import PlayerBar from "./controllers/playSong";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+    <PlayerBar
+      song={{
+        name: "motto",
+        bpm: 112,
+        imageName: "motto.jpg",
+        duration: "2:48",
+      }}
+    />
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function
