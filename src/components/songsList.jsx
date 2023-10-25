@@ -1,19 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./songList.css";
 import { Link } from "react-router-dom";
 import playSong from "../controllers/playSong";
 
 function SongsList() {
-  const [songs, setsongs] = useState([
-    { name: "motto", bpm: 112, imageName: "motto.jpg", duration: "2:48" },
-    { name: "fatrat", bpm: 112, imageName: "fatrat.jpg", duration: "2:48" },
-    {
-      name: "stressed out",
-      bpm: 112,
-      imageName: "stressed.png",
-      duration: "2:48",
-    },
-  ]);
+  const [songs, setsongs] = useState([]);
+
+  useEffect(() => {
+    // TODO: change the with correct endpoint
+    fetch(`${process.env.REACT_APP_BACKEND_URL} / `)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setsongs();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
 
   const songsComponents = songs.map((song) => {
     return (
@@ -25,13 +29,11 @@ function SongsList() {
         }}
       >
         <img src={require(`../assets/${song.imageName}`)} alt="song-pic" />
-        <Link to={"/songDetails"} className="name">
-          <p>{song.name}</p>
-        </Link>
+        <p className="name">{song.name}</p>
         <p className="duration">{song.duration}</p>
         <p className="bpm">{song.bpm}</p>
         <Link to={"/songDetails"} className="show-more">
-          Show More
+          ${song.price}
         </Link>
       </div>
     );
@@ -39,14 +41,19 @@ function SongsList() {
 
   return (
     <div className="song-list">
-      <div className="song-item">
-        <p> </p>
-        <p>Title</p>
-        <p>Duration</p>
-        <p>bpm</p>
-        <p> </p>
-      </div>
-      {songsComponents}
+      {/* songs [] ? : {songsComponents} */}
+      {songs.length === 0 ? (
+        "Loading Tracks..."
+      ) : (
+        <div className="song-item">
+          <p> </p>
+          <p>Title</p>
+          <p>Duration</p>
+          <p>bpm</p>
+          <p> </p>
+          {songsComponents}
+        </div>
+      )}
     </div>
   );
 }

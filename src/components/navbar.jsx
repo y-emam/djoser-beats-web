@@ -41,11 +41,6 @@ function Navbar() {
               CONTACTS
             </Link>
           </li>
-          {/* <li className="nav-item">
-            <Link className="nav-link" to={"/about"}>
-              ABOUT
-            </Link>
-          </li> */}
         </ul>
       </div>
     </nav>
