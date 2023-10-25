@@ -1,6 +1,7 @@
 .song-list {
   padding: 2rem;
   text-align: center;
+  display: flex;
 }
 
 .song-list .song-item {
@@ -11,6 +12,7 @@
   align-self: center;
   flex-wrap: wrap;
   margin: 2rem;
+  width: 100%;
 }
 
 .song-list .song-item img {

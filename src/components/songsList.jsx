@@ -7,12 +7,12 @@ function SongsList() {
   const [songs, setsongs] = useState([]);
 
   useEffect(() => {
-    // TODO: change the with correct endpoint
-    fetch(`${process.env.REACT_APP_BACKEND_URL} / `)
+    console.log(process.env.REACT_APP_BACKEND_URL);
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/allSongs`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setsongs();
+        setsongs(data["songs"]);
       })
       .catch((err) => {
         console.log(err.message);
@@ -28,12 +28,12 @@ function SongsList() {
           playSong(song);
         }}
       >
-        <img src={require(`../assets/${song.imageName}`)} alt="song-pic" />
+        <img src={song.imageUrl} alt="song-pic" />
         <p className="name">{song.name}</p>
         <p className="duration">{song.duration}</p>
         <p className="bpm">{song.bpm}</p>
         <Link to={"/songDetails"} className="show-more">
-          ${song.price}
+          ${song.price.toFixed(2)}
         </Link>
       </div>
     );
@@ -41,7 +41,6 @@ function SongsList() {
 
   return (
     <div className="song-list">
-      {/* songs [] ? : {songsComponents} */}
       {songs.length === 0 ? (
         "Loading Tracks..."
       ) : (
