@@ -50,8 +50,6 @@ export const playListSlice = createSlice({
       }
     },
     stepForward: (state) => {
-      console.log(state.value.currentPlayingSongInd);
-      console.log(state.value.playList.length - 1);
       if (state.value.currentPlayingSongInd < state.value.playList.length - 1) {
         state.value.currentPlayingSong =
           state.value.playList[++state.value.currentPlayingSongInd];
