@@ -31,30 +31,33 @@ export const playListSlice = createSlice({
     changeSong: (state, action) => {
       const songInp = action.payload;
       state.value.playList.forEach((song, ind) => {
-        if (song.id === songInp.id) {
+        if (song._id === songInp._id) {
           state.value.currentPlayingSong = songInp;
           state.value.currentPlayingSongInd = ind;
 
           state.value.audio.src = state.value.currentPlayingSong.mp3Url;
+          return;
         }
       });
     },
     stepBackward: (state) => {
       if (state.value.currentPlayingSongInd > 0) {
-        state.value.currentPlayingSongInd--;
         state.value.currentPlayingSong =
-          state.value.playList[state.value.currentPlayingSongInd];
+          state.value.playList[--state.value.currentPlayingSongInd];
 
         state.value.isPlaying = true;
+        state.value.audio.src = state.value.currentPlayingSong.mp3Url;
       }
     },
     stepForward: (state) => {
+      console.log(state.value.currentPlayingSongInd);
+      console.log(state.value.playList.length - 1);
       if (state.value.currentPlayingSongInd < state.value.playList.length - 1) {
-        state.value.currentPlayingSongInd++;
         state.value.currentPlayingSong =
-          state.value.playList[state.value.currentPlayingSongInd];
+          state.value.playList[++state.value.currentPlayingSongInd];
 
         state.value.isPlaying = true;
+        state.value.audio.src = state.value.currentPlayingSong.mp3Url;
       }
     },
   },

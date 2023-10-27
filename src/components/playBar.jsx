@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   changePlayList,
   setPlaying,
+  startPlaying,
   stepBackward,
   stepForward,
   stopPlaying,
@@ -28,11 +29,9 @@ const useAudio = () => {
   };
   const toggleBackward = () => {
     if (Math.floor(audio.currentTime) < 1) {
-      if (isPlaying) {
-        audio.pause();
-        dispatch(stopPlaying());
-      }
+      if (isPlaying) dispatch(stopPlaying());
       dispatch(stepBackward());
+      dispatch(startPlaying());
     } else {
       audio.currentTime = 0;
     }
@@ -40,6 +39,7 @@ const useAudio = () => {
   const toggleForward = () => {
     if (isPlaying) dispatch(stopPlaying());
     dispatch(stepForward());
+    dispatch(startPlaying());
   };
 
   useEffect(() => {
