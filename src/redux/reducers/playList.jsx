@@ -1,10 +1,12 @@
-import { createSlice, current } from "@reduxjs/toolkit";
-import getAllSongs from "../../services/getAllSongs";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: {
-    currentPlayingSong: 1,
+    currentPlayingSong: {},
+    currentPlayingSongInd: -1,
+    audio: new Audio(),
     playList: [],
+    isPlaying: false,
   },
 };
 
@@ -15,27 +17,58 @@ export const playListSlice = createSlice({
     changePlayList: (state, action) => {
       state.value.playList = action.payload;
     },
-    changeSongById: (state, action) => {
-      const songId = action.payload;
+    setPlaying: (state) => {
+      state.value.isPlaying = !state.value.isPlaying;
+    },
+    stopPlaying: (state) => {
+      state.value.isPlaying = false;
+      state.value.audio.pause();
+    },
+    startPlaying: (state) => {
+      state.value.isPlaying = true;
+      state.value.audio.play();
+    },
+    changeSong: (state, action) => {
+      const songInp = action.payload;
       state.value.playList.forEach((song, ind) => {
-        if (song.id === songId) {
-          state.value.currentPlayingSong = ind;
-          return;
+        if (song.id === songInp.id) {
+          state.value.currentPlayingSong = songInp;
+          state.value.currentPlayingSongInd = ind;
+
+          state.value.audio.src = state.value.currentPlayingSong.mp3Url;
         }
       });
     },
     stepBackward: (state) => {
-      if (state.value.currentPlayingSong > 0) state.value.currentPlayingSong--;
+      if (state.value.currentPlayingSongInd > 0) {
+        state.value.currentPlayingSongInd--;
+        state.value.currentPlayingSong =
+          state.value.playList[state.value.currentPlayingSongInd];
+
+        state.value.isPlaying = true;
+      }
     },
     stepForward: (state) => {
-      if (state.value.currentPlayingSong < state.value.playList.length - 1)
-        state.value.currentPlayingSong++;
+      if (state.value.currentPlayingSongInd < state.value.playList.length - 1) {
+        state.value.currentPlayingSongInd++;
+        state.value.currentPlayingSong =
+          state.value.playList[state.value.currentPlayingSongInd];
+
+        state.value.isPlaying = true;
+      }
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { changePlayList, changeSongById, stepBackward, stepForward } =
-  playListSlice.actions;
+export const {
+  changePlayList,
+  changeSong,
+  stepBackward,
+  stepForward,
+  setPlaying,
+  startPlaying,
+  stopPlaying,
+} = playListSlice.actions;
 
 export default playListSlice.reducer;

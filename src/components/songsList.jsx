@@ -1,14 +1,12 @@
 import "./songList.css";
 import { Link } from "react-router-dom";
-import playSong from "../controllers/playSong";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changeSong, startPlaying } from "../redux/reducers/playList";
 
 function SongsList() {
-  // const [songs, setsongs] = useState([]);
-  const playListInd = useSelector(
-    (state) => state.playList.value.currentPlayingSong
-  );
   const playList = useSelector((state) => state.playList.value.playList);
+  const isPlaying = useSelector((state) => state.playList.value.isPlaying);
+  const dispatch = useDispatch();
 
   const songsComponents = playList.map((song) => {
     return (
@@ -16,7 +14,8 @@ function SongsList() {
         className="song-item"
         key={song.name}
         onClick={() => {
-          playSong(song);
+          dispatch(changeSong(song));
+          dispatch(startPlaying());
         }}
       >
         <img src={song.imageUrl} alt="song-pic" />

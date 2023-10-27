@@ -1,98 +1,89 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import "./playBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changePlayList,
+  setPlaying,
   stepBackward,
   stepForward,
+  stopPlaying,
 } from "../redux/reducers/playList";
 import getAllSongs from "../services/getAllSongs";
 
-const useAudio = (url) => {
-  const playListInd = useSelector(
-    (state) => state.playList.value.currentPlayingSong
-  );
-  const playList = useSelector((state) => state.playList.value.playList);
+const useAudio = () => {
   const dispatch = useDispatch();
-  const [audio, setAudio] = useState(new Audio(url));
+  const audio = useSelector((state) => state.playList.value.audio);
+  const isPlaying = useSelector((state) => state.playList.value.isPlaying);
 
   useEffect(() => {
     getAllSongs().then((res) => {
       dispatch(changePlayList(res.songs));
-      console.log(playList);
-
-      setAudio(new Audio(playList[playListInd].mp3Url));
     });
   }, []);
 
-  const [playing, setPlaying] = useState(false);
-
-  const togglePlay = () => setPlaying(!playing);
+  const togglePlay = () => {
+    isPlaying ? audio.pause() : audio.play();
+    dispatch(setPlaying());
+  };
   const toggleBackward = () => {
     if (Math.floor(audio.currentTime) < 1) {
+      if (isPlaying) {
+        audio.pause();
+        dispatch(stopPlaying());
+      }
       dispatch(stepBackward());
     } else {
       audio.currentTime = 0;
     }
   };
   const toggleForward = () => {
+    if (isPlaying) dispatch(stopPlaying());
     dispatch(stepForward());
   };
 
   useEffect(() => {
-    playing ? audio.play() : audio.pause();
-  }, [playing]);
-
-  useEffect(() => {
-    audio.addEventListener("ended", () => setPlaying(false));
+    audio.addEventListener("ended", () => dispatch(stopPlaying()));
     return () => {
-      audio.removeEventListener("ended", () => setPlaying(false));
+      audio.removeEventListener("ended", () => dispatch(stopPlaying()));
     };
   }, []);
 
-  return [playing, togglePlay, toggleBackward, toggleForward];
+  return [isPlaying, togglePlay, toggleBackward, toggleForward];
 };
 
-const PlayerBar = ({ song }) => {
-  const [playing, togglePlay, toggleBackward, toggleForward] = useAudio();
-  const [value, setvalue] = useState(50);
-  const playListInd = useSelector(
+const PlayerBar = () => {
+  const [isPlaying, togglePlay, toggleBackward, toggleForward] = useAudio();
+  const currentPlayingSong = useSelector(
     (state) => state.playList.value.currentPlayingSong
   );
   const playList = useSelector((state) => state.playList.value.playList);
+  const dispatch = useDispatch();
 
-  return (
+  return playList.length > 0 && currentPlayingSong.name !== undefined ? (
     <div className="player-bar">
-      <img src={playList[playListInd].imageUrl} alt="song-img" />
-      <p>{playList[playListInd].name}</p>
+      <div className="bottom-space"></div>
+      <img src={currentPlayingSong.imageUrl} alt="song-img" />
+      <p>{currentPlayingSong.name}</p>
       <div>
         <div>
           <button onClick={toggleBackward}>
             <FaStepBackward />
           </button>
-          <button id="play-button" onClick={togglePlay}>
-            {playing ? <FaPause /> : <FaPlay />}
+          <button id="play-button" onClick={() => dispatch(togglePlay)}>
+            {isPlaying ? <FaPause /> : <FaPlay />}
           </button>
           <button onClick={toggleForward}>
             <FaStepForward />
           </button>
         </div>
-        {/* <ProgressBar animated now={50} /> */}
-        {/* <input
-          id="typeinp"
-          type="range"
-          min="0"
-          max="5"
-          value={value}
-          onChange={handleChange}
-          step=""
-        /> */}
       </div>
       <div>audio bar</div>
-      <div>{playList[playListInd].duration}</div>
+      <div>{currentPlayingSong.duration}</div>
       <div>volume bar</div>
     </div>
+  ) : (
+    <div></div>
   );
 };
 

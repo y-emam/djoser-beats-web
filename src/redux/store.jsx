@@ -5,4 +5,8 @@ export const store = configureStore({
   reducer: {
     playList: playListReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
