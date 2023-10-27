@@ -6,12 +6,14 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import PlayerBar from "./components/playBar";
 import initializeFirebase from "./config/firebase";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 initializeFirebase();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
@@ -23,7 +25,7 @@ root.render(
         duration: "2:48",
       }}
     />
-  </>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

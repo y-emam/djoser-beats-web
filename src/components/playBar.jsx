@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import "./playBar.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  changePlayList,
+  stepBackward,
+  stepForward,
+} from "../redux/reducers/playList";
+import getAllSongs from "../services/getAllSongs";
 
 const useAudio = (url) => {
+  const playListInd = useSelector(
+    (state) => state.playList.value.currentPlayingSong
+  );
+  const playList = useSelector((state) => state.playList.value.playList);
+  const dispatch = useDispatch();
   const [audio, setAudio] = useState(new Audio(url));
 
   useEffect(() => {
-    console.log(audio.src);
-    setAudio(
-      new Audio(
-        // "https://firebasestorage.googleapis.com/v0/b/djoser-beats.appspot.com/o/motto.mp3?alt=media&token=5666e85d-afc5-46c8-b539-4d150e278a7e"
-        "https://firebasestorage.googleapis.com/v0/b/djoser-beats.appspot.com/o/fatrat.mp3?alt=media&token=5cf62a07-d2d4-485e-b274-1aaaa427002e"
-        // "https://firebasestorage.googleapis.com/v0/b/djoser-beats.appspot.com/o/stressed.mp3?alt=media&token=43f7c5cb-cfd1-4937-9c46-a93f0cd08f10"
-      )
-    );
+    getAllSongs().then((res) => {
+      dispatch(changePlayList(res.songs));
+      console.log(playList);
+
+      setAudio(new Audio(playList[playListInd].mp3Url));
+    });
   }, []);
 
   const [playing, setPlaying] = useState(false);
@@ -21,15 +31,13 @@ const useAudio = (url) => {
   const togglePlay = () => setPlaying(!playing);
   const toggleBackward = () => {
     if (Math.floor(audio.currentTime) < 1) {
-      // TODO: check if there is a previous song
-      // TODO: switch to previous song
+      dispatch(stepBackward());
     } else {
       audio.currentTime = 0;
     }
   };
   const toggleForward = () => {
-    // TODO: check if there is a song next
-    // TODO: switch to next song
+    dispatch(stepForward());
   };
 
   useEffect(() => {
@@ -49,15 +57,15 @@ const useAudio = (url) => {
 const PlayerBar = ({ song }) => {
   const [playing, togglePlay, toggleBackward, toggleForward] = useAudio();
   const [value, setvalue] = useState(50);
-
-  // const handleChange = (event) => {
-  //   setvalue(event.target.value);
-  // };
+  const playListInd = useSelector(
+    (state) => state.playList.value.currentPlayingSong
+  );
+  const playList = useSelector((state) => state.playList.value.playList);
 
   return (
     <div className="player-bar">
-      <img src={require(`../assets/${song.imageName}`)} alt="song-img" />
-      <p>{song.name}</p>
+      <img src={playList[playListInd].imageUrl} alt="song-img" />
+      <p>{playList[playListInd].name}</p>
       <div>
         <div>
           <button onClick={toggleBackward}>
@@ -82,7 +90,7 @@ const PlayerBar = ({ song }) => {
         /> */}
       </div>
       <div>audio bar</div>
-      <div>{song.duration}</div>
+      <div>{playList[playListInd].duration}</div>
       <div>volume bar</div>
     </div>
   );
