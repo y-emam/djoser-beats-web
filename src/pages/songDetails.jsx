@@ -8,6 +8,7 @@ import {
   FaMusic,
   FaStream,
   FaDollarSign,
+  FaCalendar,
 } from "react-icons/fa";
 import addToCart from "../services/addToCart";
 
@@ -65,7 +66,9 @@ function SongDetails() {
                   <FaClock /> {song.duration}
                 </p>
               </div>
-              <p className="date">{song.date}</p>
+              <p className="date">
+                <FaCalendar /> {song.date.split("T")[0]}
+              </p>
               <div className="tags"></div>
             </div>
           </div>
