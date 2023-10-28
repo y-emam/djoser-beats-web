@@ -67,26 +67,28 @@ const PlayerBar = () => {
   const dispatch = useDispatch();
 
   return playList.length > 0 && currentPlayingSong.name !== undefined ? (
-    <div className="player-bar">
+    <div>
       <div className="bottom-space"></div>
-      <img src={currentPlayingSong.imageUrl} alt="song-img" />
-      <p>{currentPlayingSong.name}</p>
-      <div>
+      <div className="player-bar">
+        <img src={currentPlayingSong.imageUrl} alt="song-img" />
+        <p>{currentPlayingSong.name}</p>
         <div>
-          <button onClick={toggleBackward}>
-            <FaStepBackward />
-          </button>
-          <button id="play-button" onClick={() => dispatch(togglePlay)}>
-            {isPlaying ? <FaPause /> : <FaPlay />}
-          </button>
-          <button onClick={toggleForward}>
-            <FaStepForward />
-          </button>
+          <div>
+            <button onClick={toggleBackward}>
+              <FaStepBackward />
+            </button>
+            <button id="play-button" onClick={() => dispatch(togglePlay)}>
+              {isPlaying ? <FaPause /> : <FaPlay />}
+            </button>
+            <button onClick={toggleForward}>
+              <FaStepForward />
+            </button>
+          </div>
         </div>
+        <div>audio bar</div>
+        <div>{currentPlayingSong.duration}</div>
+        <div>volume bar</div>
       </div>
-      <div>audio bar</div>
-      <div>{currentPlayingSong.duration}</div>
-      <div>volume bar</div>
     </div>
   ) : (
     <div></div>

@@ -1,3 +1,7 @@
+.bottom-space {
+  height: 6rem;
+}
+
 .player-bar {
   position: fixed;
   left: 0;
