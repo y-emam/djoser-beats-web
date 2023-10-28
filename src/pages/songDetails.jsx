@@ -3,8 +3,8 @@ import Navbar from "../components/navbar";
 import "./songDetails.css";
 import {
   FaCartPlus,
-  FaClock,
   FaMicrophone,
+  FaBroadcastTower,
   FaMusic,
   FaStream,
   FaDollarSign,
@@ -40,7 +40,7 @@ function SongDetails() {
             <FaDollarSign /> {songPackage.usages.distributions}
           </p>
           <p>
-            <FaStream /> {songPackage.usages.audioStreams}
+            <FaBroadcastTower /> {songPackage.usages.audioStreams}
           </p>
           <p>
             <FaMusic /> {songPackage.usages.musicVideo}

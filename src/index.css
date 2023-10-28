@@ -23,6 +23,8 @@ code {
 /* navbar */
 .navbar {
   background-color: var(--main-dark);
+  box-shadow: 1px 1px 4px white;
+  width: 100%;
 }
 .navbar .nav-item {
   font-weight: bold;
