@@ -9,21 +9,20 @@ function SongsList() {
   const dispatch = useDispatch();
 
   const songsComponents = playList.map((song) => {
+    const handleSongClick = () => {
+      dispatch(changeSong(song));
+      dispatch(startPlaying());
+    };
+
     return (
-      <div
-        className="song-item"
-        key={song.name}
-        onClick={() => {
-          dispatch(changeSong(song));
-          dispatch(startPlaying());
-        }}
-      >
-        <img src={song.imageUrl} alt="song-pic" />
-        <p className="name">{song.name}</p>
+      <div className="song-item" key={song.name}>
+        <img src={song.imageUrl} alt="song-pic" onClick={handleSongClick} />
+        <p className="name" onClick={handleSongClick}>
+          {song.name}
+        </p>
         <p className="duration">{song.duration}</p>
         <p className="bpm">{song.bpm}</p>
         <Link to={"/songDetails"} className="show-more">
-          {/* ${song.price.toFixed(2)} */}
           <FaCartPlus /> Add to Cart
         </Link>
       </div>

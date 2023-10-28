@@ -17,6 +17,8 @@ function SongDetails() {
 
   const packages = song.packages;
 
+  console.log(song);
+
   const packagesComponents = packages.map((songPackage) => {
     return (
       <div className="package-item">
@@ -61,10 +63,10 @@ function SongDetails() {
               <p className="name">{song.name}</p>
               <div style={{ display: "flex" }}>
                 <p className="bpm">BPM: {song.bpm}</p>
-                &nbsp; &nbsp;
-                <p className="duration">
+                {/* &nbsp; &nbsp; */}
+                {/* <p className="duration">
                   <FaClock /> {song.duration}
-                </p>
+                </p> */}
               </div>
               <p className="date">
                 <FaCalendar /> {song.date.split("T")[0]}
