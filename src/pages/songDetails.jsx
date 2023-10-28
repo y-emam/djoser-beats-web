@@ -1,15 +1,53 @@
 import { useSelector } from "react-redux";
 import Navbar from "../components/navbar";
 import "./songDetails.css";
-import { FaClock } from "react-icons/fa";
+import {
+  FaCartPlus,
+  FaClock,
+  FaMicrophone,
+  FaMusic,
+  FaStream,
+  FaDollarSign,
+} from "react-icons/fa";
 
 function SongDetails() {
   const song = useSelector((state) => state.playList.value.currentPlayingSong);
 
-  const packages = [1, 2, 3, 4];
+  const packages = song.packages;
+
+  const addToCart = () => {
+    console.log(packages[0]);
+    console.log("Add to cart");
+  };
 
   const packagesComponents = packages.map((songPackage) => {
-    return <div>some shit</div>;
+    return (
+      <div className="package-item">
+        <div className="name-price">
+          <p className="name">{songPackage.name}</p>
+          <button onClick={addToCart}>
+            <FaCartPlus /> {Math.floor(songPackage.price).toFixed(2)}
+          </button>
+        </div>
+        <div className="packages">
+          <p>
+            <FaMicrophone /> {songPackage.usages.musicRecording}
+          </p>
+          <p>
+            <FaDollarSign /> {songPackage.usages.distributions}
+          </p>
+          <p>
+            <FaStream /> {songPackage.usages.audioStreams}
+          </p>
+          <p>
+            <FaMusic /> {songPackage.usages.musicVideo}
+          </p>
+          <p>
+            <FaMicrophone /> {songPackage.usages.livePerformances}
+          </p>
+        </div>
+      </div>
+    );
   });
   return (
     <div className="song-details">

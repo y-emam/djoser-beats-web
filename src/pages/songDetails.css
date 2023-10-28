@@ -31,3 +31,20 @@
 .song-details .header .content .name {
   font-size: 40px;
 }
+
+.song-details .package-item {
+  width: 100%;
+  box-shadow: 2px 2px 6px white;
+}
+
+.song-details .package-item .name-price {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.song-details .package-item .name-price p {
+  font-weight: bold;
+  font-size: 24px;
+}
