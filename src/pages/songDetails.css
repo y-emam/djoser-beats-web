@@ -1,1 +1,33 @@
-.song-details;
+.song-details {
+  width: 100%;
+  padding: 0 12px;
+}
+
+.song-details .header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 12px 0;
+  margin-right: 200px;
+}
+
+.song-details .header .content {
+  margin-top: 50px;
+}
+
+.song-details .header img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.song-details .header p {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.song-details .header .content .name {
+  font-size: 40px;
+}
