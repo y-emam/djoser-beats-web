@@ -16,6 +16,9 @@ const useAudio = () => {
   const dispatch = useDispatch();
   const audio = useSelector((state) => state.playList.value.audio);
   const isPlaying = useSelector((state) => state.playList.value.isPlaying);
+  const currentPlayingSongId = useSelector(
+    (state) => state.playList.value.currentPlayingSongId
+  );
 
   useEffect(() => {
     getAllSongs().then((res) => {
@@ -43,7 +46,10 @@ const useAudio = () => {
   };
 
   useEffect(() => {
-    audio.addEventListener("ended", () => dispatch(stopPlaying()));
+    audio.addEventListener("ended", () => {
+      console.log("currentPlayingid" + currentPlayingSongId);
+      toggleForward();
+    });
     return () => {
       audio.removeEventListener("ended", () => dispatch(stopPlaying()));
     };

@@ -5,6 +5,7 @@ import AllSongs from "./pages/allSongs";
 import Contacts from "./pages/contacts";
 import NoPage from "./pages/noPage";
 import CartPage from "./pages/cart";
+import SongDetails from "./pages/songDetails";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/songs" element={<AllSongs />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/SongDetails" element={<SongDetails />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<NoPage />} />
       </Routes>

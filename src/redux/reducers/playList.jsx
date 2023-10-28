@@ -30,15 +30,19 @@ export const playListSlice = createSlice({
     },
     changeSong: (state, action) => {
       const songInp = action.payload;
-      state.value.playList.forEach((song, ind) => {
-        if (song._id === songInp._id) {
-          state.value.currentPlayingSong = songInp;
-          state.value.currentPlayingSongInd = ind;
 
-          state.value.audio.src = state.value.currentPlayingSong.mp3Url;
-          return;
-        }
-      });
+      // check if it is the currently song or not
+      if (songInp._id !== state.value.currentPlayingSong._id) {
+        state.value.playList.forEach((song, ind) => {
+          if (song._id === songInp._id) {
+            state.value.currentPlayingSong = songInp;
+            state.value.currentPlayingSongInd = ind;
+            console.log(state.value.currentPlayingSongInd);
+            state.value.audio.src = state.value.currentPlayingSong.mp3Url;
+            return;
+          }
+        });
+      }
     },
     stepBackward: (state) => {
       if (state.value.currentPlayingSongInd > 0) {
