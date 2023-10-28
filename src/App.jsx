@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import AllSongs from "./pages/allSongs";
 import Contacts from "./pages/contacts";
 import NoPage from "./pages/noPage";
+import CartPage from "./pages/cart";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/songs" element={<AllSongs />} />
-        <Route path="contact" element={<Contacts />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

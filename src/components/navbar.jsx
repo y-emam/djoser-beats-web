@@ -4,13 +4,14 @@ import "../index.css";
 import "bootstrap/js/src/collapse.js";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { Link } from "react-router-dom";
+import { FaCartShopping } from "react-icons/fa6";
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark ">
-      <a className="navbar-brand" href="/">
+      <Link className="navbar-brand" to={"/"}>
         <Image src={logo} width={50} className="navbar-logo" />
-      </a>
+      </Link>
 
       <button
         className="navbar-toggler"
@@ -26,21 +27,20 @@ function Navbar() {
 
       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li className="nav-item">
-            <Link className="nav-link" to={"/"}>
-              HOME
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to={"/songs"}>
-              BEATS
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to={"/contacts"}>
-              CONTACTS
-            </Link>
-          </li>
+          <Link className="nav-link" to={"/"}>
+            <li className="nav-item">HOME</li>
+          </Link>
+          <Link className="nav-link" to={"/songs"}>
+            <li className="nav-item">BEATS</li>
+          </Link>
+          <Link className="nav-link" to={"/contacts"}>
+            <li className="nav-item">CONTACTS</li>
+          </Link>
+          <Link className="nav-link" to={"/cart"}>
+            <li className="nav-item">
+              <FaCartShopping />
+            </li>
+          </Link>
         </ul>
       </div>
     </nav>
