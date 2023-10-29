@@ -1,12 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/navbar";
 import "./cart.css";
-import { FaX } from "react-icons/fa6";
+import { FaPaypal, FaX } from "react-icons/fa6";
 import { removeFromCart } from "../redux/reducers/cartRedux";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.value.items);
   const dispatch = useDispatch();
+
+  const totalPrice = useSelector((state) => {
+    let price = 0;
+    state.cart.value.items.forEach((item) => (price += item.price));
+    return price;
+  });
 
   const cartItemsComponents = cartItems.map((item) => (
     <div className="item">
@@ -33,7 +39,18 @@ const CartPage = () => {
         <div>
           <div className="content">
             <div className="cart-items">{cartItemsComponents}</div>
-            <div className="checkout-list"></div>
+            <div className="checkout-list">
+              <h2>Checkout</h2>
+              <hr />
+              <div className="total">
+                <p className="title">Total Price: </p>
+                <p className="price">{`$${totalPrice.toFixed(2)}`}</p>
+              </div>
+              {/* TODO: check paypal botton from payment library */}
+              {/* <button className="paypal">
+                <FaPaypal /> Pay With PayPal
+              </button> */}
+            </div>
           </div>
         </div>
       ) : (

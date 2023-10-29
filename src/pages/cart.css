@@ -1,16 +1,19 @@
 .cart-page .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-weight: bold;
 }
 
 .cart-page .content .item {
   box-shadow: 1px 1px 4px white;
-  max-width: 50rem;
+  min-width: 50rem;
   display: flex;
   flex-direction: row;
   justify-content: start;
   padding: 1rem;
   align-items: center;
-  font-weight: bold;
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem;
 }
 
 .cart-page .content img {
@@ -46,4 +49,36 @@
   font-size: 1.5rem;
   position: relative;
   align-self: flex-start;
+}
+
+.cart-page .checkout-list {
+  box-shadow: 1px 1px 4px white;
+  min-width: 20rem;
+  width: auto;
+  height: 300px;
+  margin-top: 1rem;
+}
+
+.cart-page .checkout-list h2 {
+}
+
+.cart-page .checkout-list hr {
+  color: white;
+  border-color: white;
+  margin: 0 1rem;
+}
+
+.cart-page .checkout-list .total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.cart-page .checkout-list .total .title {
+  font-size: 1rem;
+}
+
+.cart-page .checkout-list .total .price {
+  font-size: 1rem;
 }

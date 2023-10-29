@@ -37,6 +37,11 @@ function SongDetails() {
                   imageUrl: song.imageUrl,
                 })
               );
+
+              // TODO: change the button to view Cart
+
+              // TODO: disable adding if it is in cart else it works
+              // TODO: disabling means navigate to cart instead of adding
             }}
           >
             <FaCartPlus /> {Math.floor(songPackage.price).toFixed(2)}
