@@ -1,0 +1,49 @@
+.cart-page .content {
+}
+
+.cart-page .content .item {
+  box-shadow: 1px 1px 4px white;
+  max-width: 50rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: 1rem;
+  align-items: center;
+  font-weight: bold;
+  margin: 1rem 0 1rem 1rem;
+}
+
+.cart-page .content img {
+  width: 10rem;
+  height: 10rem;
+  object-fit: cover;
+  border-radius: 1rem;
+  margin-right: 1rem;
+}
+
+.cart-page .content .item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.cart-page .content .item-details .song-name {
+  font-size: 2rem;
+}
+
+.cart-page .content .item-details .package-name {
+}
+
+.cart-page .content .item .price {
+  margin-left: auto;
+  font-size: 1.5rem;
+}
+
+.cart-page .content .item button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  position: relative;
+  align-self: flex-start;
+}

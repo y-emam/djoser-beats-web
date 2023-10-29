@@ -62,6 +62,7 @@ function SongDetails() {
       </div>
     );
   });
+
   return (
     <div className="song-details">
       <Navbar />
