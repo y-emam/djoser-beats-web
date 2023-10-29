@@ -5,8 +5,11 @@ import "bootstrap/js/src/collapse.js";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 function Navbar() {
+  const cartItems = useSelector((state) => state.cart.value.items);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark ">
       <Link className="navbar-brand" to={"/"}>
@@ -38,7 +41,10 @@ function Navbar() {
           </Link>
           <Link className="nav-link" to={"/cart"}>
             <li className="nav-item">
-              <FaCartShopping />
+              <FaCartShopping size={20} className="cart-icon" />
+              {cartItems.length > 0 ? (
+                <p className="cart-items-count">{cartItems.length}</p>
+              ) : null}
             </li>
           </Link>
         </ul>

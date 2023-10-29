@@ -37,6 +37,26 @@ code {
   border-width: 3;
 }
 
+.navbar .nav-item {
+  /* display: flex;
+  flex-direction: row; */
+}
+
+/* .navbar .cart-icon {
+  font-size: 50px;
+} */
+
+.navbar .cart-items-count {
+  position: absolute;
+  top: 2rem;
+  right: 0rem;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 button {
   cursor: pointer;
 }
