@@ -6,18 +6,20 @@ import {
   FaMicrophone,
   FaBroadcastTower,
   FaMusic,
-  FaStream,
   FaDollarSign,
   FaCalendar,
 } from "react-icons/fa";
 import addToCart from "../services/addToCart";
+import { useLocation } from "react-router-dom";
 
 function SongDetails() {
-  const song = useSelector((state) => state.playList.value.currentPlayingSong);
-
-  const packages = song.packages;
+  const location = useLocation();
+  const song = JSON.parse(decodeURIComponent(location.hash.slice(1)));
 
   console.log(song);
+  console.log(song.packages);
+
+  const packages = song.packages;
 
   const packagesComponents = packages.map((songPackage) => {
     return (

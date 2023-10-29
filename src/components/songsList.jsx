@@ -2,7 +2,7 @@ import "./songList.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSong, startPlaying } from "../redux/reducers/playList";
-import { FaCartPlus, FaCartShopping } from "react-icons/fa6";
+import { FaCartPlus } from "react-icons/fa6";
 
 function SongsList() {
   const playList = useSelector((state) => state.playList.value.playList);
@@ -22,7 +22,14 @@ function SongsList() {
         </p>
         <p className="duration">{song.duration}</p>
         <p className="bpm">{song.bpm}</p>
-        <Link to={"/songDetails"} className="show-more">
+        <Link
+          to={{
+            pathname: "/songDetails",
+            // search: JSON.stringify(song),
+            hash: JSON.stringify(song),
+          }}
+          className="show-more"
+        >
           <FaCartPlus /> Add to Cart
         </Link>
       </div>
