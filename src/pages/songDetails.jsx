@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/navbar";
 import "./songDetails.css";
 import {
@@ -9,17 +9,18 @@ import {
   FaDollarSign,
   FaCalendar,
 } from "react-icons/fa";
-import addToCart from "../services/addToCart";
 import { useLocation } from "react-router-dom";
+import { addToCart } from "../redux/reducers/cartRedux";
 
 function SongDetails() {
   const location = useLocation();
   const song = JSON.parse(decodeURIComponent(location.hash.slice(1)));
-
-  console.log(song);
-  console.log(song.packages);
-
   const packages = song.packages;
+
+  const cartItems = useSelector((state) => state.cart.value.items);
+  console.log(cartItems);
+
+  const dispatch = useDispatch();
 
   const packagesComponents = packages.map((songPackage) => {
     return (
@@ -28,7 +29,14 @@ function SongDetails() {
           <p className="name">{songPackage.name}</p>
           <button
             onClick={() => {
-              addToCart(songPackage, song);
+              dispatch(
+                addToCart({
+                  songName: song.name,
+                  packageName: songPackage.name,
+                  price: songPackage.price,
+                  imageUrl: song.imageUrl,
+                })
+              );
             }}
           >
             <FaCartPlus /> {Math.floor(songPackage.price).toFixed(2)}
@@ -65,10 +73,6 @@ function SongDetails() {
               <p className="name">{song.name}</p>
               <div style={{ display: "flex" }}>
                 <p className="bpm">BPM: {song.bpm}</p>
-                {/* &nbsp; &nbsp; */}
-                {/* <p className="duration">
-                  <FaClock /> {song.duration}
-                </p> */}
               </div>
               <p className="date">
                 <FaCalendar /> {song.date.split("T")[0]}
