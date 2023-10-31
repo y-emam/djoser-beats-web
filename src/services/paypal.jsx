@@ -1,24 +1,24 @@
-const { default: addPurchase } = require("./addPurchase");
-const { sendEmailToMe } = require("./sendEmail");
-
 const onApprove = (data, actions) => {
-  sendEmailToMe();
+  // TODO: Show him a window to check his mail for his payment and his payment is done successfully
+};
 
-  addPurchase();
-
-  // TODO: Show him a window to check his mail for his payment
-
-  // TODO: fuck you
-  console.log("$$$$$$$ We Are Rich BABEEEY $$$$$$$");
-  console.log(data);
-  actions.braintree.tokenizePayment(data).then((payload) => {
-    // call server-side endpoint to finish the sale
-    console.log(payload);
-  });
+const createOrder = async (data, actions, carItems, email) => {
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/createOrder`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      cartItems: carItems,
+      email: "yasseremam2002@gmail.com",
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 };
 
 const onCancel = () => {};
 
 const onError = () => {};
 
-module.exports = { onApprove, onCancel, onError };
+module.exports = { onApprove, createOrder, onCancel, onError };

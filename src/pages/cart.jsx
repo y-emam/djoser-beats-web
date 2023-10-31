@@ -4,7 +4,7 @@ import "./cart.css";
 import { FaX } from "react-icons/fa6";
 import { removeFromCart } from "../redux/reducers/cartRedux";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { onApprove } from "../services/paypal";
+import { createOrder, onApprove } from "../services/paypal";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.value.items);
@@ -17,7 +17,7 @@ const CartPage = () => {
   });
 
   const cartItemsComponents = cartItems.map((item) => (
-    <div className="item">
+    <div className="item" key={item.songName + item.packageName}>
       <img src={item.imageUrl} alt="song-img" />
       <div className="item-details">
         <p className="song-name">{item.songName}</p>
@@ -50,9 +50,11 @@ const CartPage = () => {
               </div>
               <div className="paypal-button">
                 <PayPalButtons
-                  onApprove={onApprove}
-                  onError={() => {
-                    console.log("Mission Failed");
+                  onApprove={(data, actions) => {
+                    createOrder(data, actions, cartItems, "shit@shit.com");
+                  }}
+                  onError={(err) => {
+                    console.log(`Mission Failed: ${err}`);
                   }}
                   onCancel={() => {
                     // toDO: can show a window to contact us if he is having issues with paying

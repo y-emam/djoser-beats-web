@@ -17,14 +17,11 @@ function SongDetails() {
   const song = JSON.parse(decodeURIComponent(location.hash.slice(1)));
   const packages = song.packages;
 
-  const cartItems = useSelector((state) => state.cart.value.items);
-  console.log(cartItems);
-
   const dispatch = useDispatch();
 
   const packagesComponents = packages.map((songPackage) => {
     return (
-      <div className="package-item">
+      <div className="package-item" key={songPackage.name}>
         <div className="name-price">
           <p className="name">{songPackage.name}</p>
           <button
