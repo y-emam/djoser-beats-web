@@ -1,7 +1,3 @@
-const onApprove = (data, actions) => {
-  // TODO: Show him a window to check his mail for his payment and his payment is done successfully
-};
-
 const createOrder = async (data, actions, carItems, email) => {
   return fetch(`${process.env.REACT_APP_BACKEND_URL}/createOrder`, {
     method: "POST",
@@ -10,15 +6,24 @@ const createOrder = async (data, actions, carItems, email) => {
     },
     body: JSON.stringify({
       cartItems: carItems,
-      email: "yasseremam2002@gmail.com",
+      email: email != null ? "yasseremam2002@gmail.com" : email,
     }),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      // TODO show error message
+      onError();
+    });
 };
 
-const onCancel = () => {};
+const onCancel = () => {
+  // TODO can show a window to contact us if he is having issues with paying
+  console.log("w2ft leh ysta");
+};
 
 const onError = () => {};
 
-module.exports = { onApprove, createOrder, onCancel, onError };
+module.exports = { createOrder, onCancel, onError };

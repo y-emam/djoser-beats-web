@@ -4,7 +4,7 @@ import "./cart.css";
 import { FaX } from "react-icons/fa6";
 import { removeFromCart } from "../redux/reducers/cartRedux";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { createOrder, onApprove } from "../services/paypal";
+import { createOrder, onApprove, onCancel } from "../services/paypal";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.value.items);
@@ -56,10 +56,7 @@ const CartPage = () => {
                   onError={(err) => {
                     console.log(`Mission Failed: ${err}`);
                   }}
-                  onCancel={() => {
-                    // toDO: can show a window to contact us if he is having issues with paying
-                    console.log("w2ft leh ysta");
-                  }}
+                  onCancel={onCancel}
                 />
               </div>
             </div>
