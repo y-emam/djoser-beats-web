@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/navbar";
 import "./cart.css";
-import { FaPaypal, FaX } from "react-icons/fa6";
+import { FaX } from "react-icons/fa6";
 import { removeFromCart } from "../redux/reducers/cartRedux";
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { onApprove } from "../services/paypal";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.value.items);
@@ -46,10 +48,18 @@ const CartPage = () => {
                 <p className="title">Total Price: </p>
                 <p className="price">{`$${totalPrice.toFixed(2)}`}</p>
               </div>
-              {/* TODO: check paypal botton from payment library */}
-              {/* <button className="paypal">
-                <FaPaypal /> Pay With PayPal
-              </button> */}
+              <div className="paypal-button">
+                <PayPalButtons
+                  onApprove={onApprove}
+                  onError={() => {
+                    console.log("Mission Failed");
+                  }}
+                  onCancel={() => {
+                    // toDO: can show a window to contact us if he is having issues with paying
+                    console.log("w2ft leh ysta");
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>

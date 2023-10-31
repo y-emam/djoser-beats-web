@@ -8,6 +8,7 @@ import PlayerBar from "./components/playBar";
 import initializeFirebase from "./config/firebase";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 initializeFirebase();
 
@@ -15,16 +16,16 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <PayPalScriptProvider
+        options={{
+          clientId: process.env.REACT_APP_PAYPAL,
+          currency: "USD",
+        }}
+      >
+        <App />
+      </PayPalScriptProvider>
     </BrowserRouter>
-    <PlayerBar
-      song={{
-        name: "motto",
-        bpm: 112,
-        imageName: "motto.jpg",
-        duration: "2:48",
-      }}
-    />
+    <PlayerBar />
   </Provider>
 );
 

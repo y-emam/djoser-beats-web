@@ -82,3 +82,8 @@
 .cart-page .checkout-list .total .price {
   font-size: 1rem;
 }
+
+.cart-page .paypal-button {
+  margin: 1rem;
+  align-self: flex-end;
+}
