@@ -15,24 +15,29 @@ function SongsList() {
     };
 
     return (
-      <div className="song-item" key={song.name}>
-        <img src={song.imageUrl} alt="song-pic" onClick={handleSongClick} />
-        <p className="name" onClick={handleSongClick}>
+      <li className="song-item" key={song.name}>
+        <img
+          className="grid-item"
+          src={song.imageUrl}
+          alt="song-pic"
+          onClick={handleSongClick}
+        />
+        <p className="name grid-item" onClick={handleSongClick}>
           {song.name}
         </p>
-        <p className="duration">{song.duration}</p>
-        <p className="bpm">{song.bpm}</p>
+        <p className="duration grid-item">{song.duration}</p>
+        <p className="bpm grid-item">{song.bpm}</p>
         <Link
           to={{
             pathname: "/songDetails",
             // search: JSON.stringify(song),
             hash: JSON.stringify(song),
           }}
-          className="show-more"
+          className="show-more grid-item"
         >
-          <FaCartPlus /> Add to Cart
+          <FaCartPlus /> Show Packages
         </Link>
-      </div>
+      </li>
     );
   });
 
@@ -41,13 +46,27 @@ function SongsList() {
       {playList.length === 0 ? (
         "Loading Tracks..."
       ) : (
-        <div className="song-item">
-          <p> </p>
-          <p>Title</p>
-          <p>Duration</p>
-          <p>bpm</p>
-          <p> </p>
-          {songsComponents}
+        <div>
+          <h1>Popular Beats</h1>
+          <hr
+            style={{
+              color: "white",
+              borderColor: "white",
+              margin: "1rem 5rem ",
+            }}
+          />
+          <div className="song-item">
+            <ul>
+              <li>
+                <p className="grid-item"> </p>
+                <p className="grid-item">Title</p>
+                <p className="grid-item">Duration</p>
+                <p className="grid-item">bpm</p>
+                <p className="grid-item"> </p>
+              </li>
+              {songsComponents}
+            </ul>
+          </div>
         </div>
       )}
     </div>

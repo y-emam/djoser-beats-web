@@ -6,6 +6,7 @@ import Contacts from "./pages/contacts";
 import NoPage from "./pages/noPage";
 import CartPage from "./pages/cart";
 import SongDetails from "./pages/songDetails";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/SongDetails" element={<SongDetails />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

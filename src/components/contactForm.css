@@ -1,0 +1,44 @@
+.contact-form {
+  height: 80vh;
+  width: 100%;
+  background-color: rgb(177, 177, 177);
+  padding-top: 3rem;
+}
+
+.contact-form h1 {
+  color: black;
+  font-weight: bold;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-form form input {
+  background-color: rgb(177, 177, 177);
+  margin: 1rem 0;
+  width: 60%;
+  box-shadow: none;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: black;
+}
+
+.contact-form form input::placeholder {
+  color: black;
+}
+
+.contact-form form button {
+  color: white;
+  background-color: black;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  border: none;
+  text-align: center;
+  width: 10rem;
+  margin-top: 2rem;
+}
