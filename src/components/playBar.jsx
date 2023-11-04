@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import "./playBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changePlayList,
+  justReferesh,
+  seekToSecond,
   setPlaying,
   startPlaying,
   stepBackward,
@@ -59,12 +61,30 @@ const useAudio = () => {
 };
 
 const PlayerBar = () => {
-  const [isPlaying, togglePlay, toggleBackward, toggleForward] = useAudio();
+  const playList = useSelector((state) => state.playList.value.playList);
+  const audio = useSelector((state) => state.playList.value.audio);
   const currentPlayingSong = useSelector(
     (state) => state.playList.value.currentPlayingSong
   );
-  const playList = useSelector((state) => state.playList.value.playList);
+
+  const [isPlaying, togglePlay, toggleBackward, toggleForward] = useAudio();
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      document.getElementById("audio-seeker").value = audio.currentTime;
+      document.getElementById("audio-duration").textContent = `${Math.floor(
+        audio.currentTime / 60
+      )}:${
+        Math.floor(audio.currentTime % 60) < 10
+          ? "0" + Math.floor(audio.currentTime)
+          : Math.floor(audio.currentTime % 60)
+      } | ${currentPlayingSong.duration}`;
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return playList.length > 0 && currentPlayingSong.name !== undefined ? (
     <div>
@@ -85,9 +105,19 @@ const PlayerBar = () => {
             </button>
           </div>
         </div>
-        <div>audio bar</div>
-        <div>{currentPlayingSong.duration}</div>
-        <div>volume bar</div>
+        <div className="audio-bar">
+          <input
+            id="audio-seeker"
+            type="range"
+            min={0}
+            max={audio.duration}
+            value={audio.currentTime}
+            onChange={(e) => {
+              dispatch(seekToSecond(e.target.value));
+            }}
+          />
+        </div>
+        <div id="audio-duration"></div>
       </div>
     </div>
   ) : (

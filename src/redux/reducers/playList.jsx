@@ -7,6 +7,7 @@ const initialState = {
     audio: new Audio(),
     playList: [],
     isPlaying: false,
+    currentTime: 0,
   },
 };
 
@@ -16,6 +17,7 @@ export const playListSlice = createSlice({
   reducers: {
     changePlayList: (state, action) => {
       state.value.playList = action.payload;
+      state.value.currentTime = 0;
     },
     setPlaying: (state) => {
       state.value.isPlaying = !state.value.isPlaying;
@@ -39,6 +41,7 @@ export const playListSlice = createSlice({
             state.value.currentPlayingSongInd = ind;
             console.log(state.value.currentPlayingSongInd);
             state.value.audio.src = state.value.currentPlayingSong.mp3Url;
+            state.value.currentTime = 0;
             return;
           }
         });
@@ -51,6 +54,7 @@ export const playListSlice = createSlice({
 
         state.value.isPlaying = true;
         state.value.audio.src = state.value.currentPlayingSong.mp3Url;
+        state.value.currentTime = 0;
       }
     },
     stepForward: (state) => {
@@ -60,7 +64,16 @@ export const playListSlice = createSlice({
 
         state.value.isPlaying = true;
         state.value.audio.src = state.value.currentPlayingSong.mp3Url;
+        state.value.currentTime = 0;
       }
+    },
+    seekToSecond: (state, action) => {
+      const timeInp = action.payload;
+
+      state.value.audio.currentTime = timeInp;
+    },
+    justReferesh: (state) => {
+      state.value.audio.currentTime = state.value.audio.currentTime;
     },
   },
 });
@@ -74,6 +87,8 @@ export const {
   setPlaying,
   startPlaying,
   stopPlaying,
+  seekToSecond,
+  justReferesh,
 } = playListSlice.actions;
 
 export default playListSlice.reducer;
