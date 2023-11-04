@@ -1,7 +1,7 @@
 .contact-form {
   height: 80vh;
   width: 100%;
-  background-color: rgb(177, 177, 177);
+  background-color: rgb(203, 216, 255);
   padding-top: 3rem;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .contact-form form input {
-  background-color: rgb(177, 177, 177);
+  background-color: rgb(203, 216, 255);
   margin: 1rem 0;
   width: 60%;
   box-shadow: none;

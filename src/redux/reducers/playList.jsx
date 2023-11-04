@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   value: {
@@ -29,6 +29,16 @@ export const playListSlice = createSlice({
     startPlaying: (state) => {
       state.value.isPlaying = true;
       state.value.audio.play();
+
+      console.log(current(state.value.currentPlayingSong));
+
+      if (state.value.currentPlayingSong === undefined) {
+        console.log("in");
+        state.value.playList.forEach((song) => {
+          if (song.mp3Url === state.value.audio.src)
+            state.value.currentPlayingSong = song;
+        });
+      }
     },
     changeSong: (state, action) => {
       const songInp = action.payload;
@@ -39,7 +49,6 @@ export const playListSlice = createSlice({
           if (song._id === songInp._id) {
             state.value.currentPlayingSong = songInp;
             state.value.currentPlayingSongInd = ind;
-            console.log(state.value.currentPlayingSongInd);
             state.value.audio.src = state.value.currentPlayingSong.mp3Url;
             state.value.currentTime = 0;
             return;
@@ -72,9 +81,6 @@ export const playListSlice = createSlice({
 
       state.value.audio.currentTime = timeInp;
     },
-    justReferesh: (state) => {
-      state.value.audio.currentTime = state.value.audio.currentTime;
-    },
   },
 });
 
@@ -88,7 +94,6 @@ export const {
   startPlaying,
   stopPlaying,
   seekToSecond,
-  justReferesh,
 } = playListSlice.actions;
 
 export default playListSlice.reducer;

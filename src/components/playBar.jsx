@@ -4,7 +4,6 @@ import "./playBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changePlayList,
-  justReferesh,
   seekToSecond,
   setPlaying,
   startPlaying,
@@ -70,17 +69,24 @@ const PlayerBar = () => {
   const [isPlaying, togglePlay, toggleBackward, toggleForward] = useAudio();
 
   const dispatch = useDispatch();
-  const audioSeeker = document.getElementById("audio-seeker");
-  const audioDuration = document.getElementById("audio-duration");
 
   useEffect(() => {
     const interval = setInterval(() => {
-      audioSeeker.value = audio.currentTime;
-      audioDuration.textContent = `${Math.floor(audio.currentTime / 60)}:${
-        Math.floor(audio.currentTime % 60) < 10
-          ? "0" + Math.floor(audio.currentTime)
-          : Math.floor(audio.currentTime % 60)
-      } | ${currentPlayingSong.duration}`;
+      const audioSeeker = document.getElementById("audio-seeker");
+      const audioDuration = document.getElementById("audio-duration");
+
+      // console.log(currentPlayingSong);
+
+      if (audioSeeker && audioDuration) {
+        document.getElementById("audio-seeker").value = audio.currentTime;
+        document.getElementById("audio-duration").textContent = `${Math.floor(
+          audio.currentTime / 60
+        )}:${
+          Math.floor(audio.currentTime % 60) < 10
+            ? "0" + Math.floor(audio.currentTime)
+            : Math.floor(audio.currentTime % 60)
+        } | ${currentPlayingSong.duration}`;
+      }
     }, 1000);
 
     return () => clearInterval(interval);
