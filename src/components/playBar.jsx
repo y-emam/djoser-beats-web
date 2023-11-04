@@ -70,13 +70,13 @@ const PlayerBar = () => {
   const [isPlaying, togglePlay, toggleBackward, toggleForward] = useAudio();
 
   const dispatch = useDispatch();
+  const audioSeeker = document.getElementById("audio-seeker");
+  const audioDuration = document.getElementById("audio-duration");
 
   useEffect(() => {
     const interval = setInterval(() => {
-      document.getElementById("audio-seeker").value = audio.currentTime;
-      document.getElementById("audio-duration").textContent = `${Math.floor(
-        audio.currentTime / 60
-      )}:${
+      audioSeeker.value = audio.currentTime;
+      audioDuration.textContent = `${Math.floor(audio.currentTime / 60)}:${
         Math.floor(audio.currentTime % 60) < 10
           ? "0" + Math.floor(audio.currentTime)
           : Math.floor(audio.currentTime % 60)

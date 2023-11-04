@@ -38,6 +38,8 @@
 .song-list .name {
   cursor: pointer;
   color: white;
+  justify-self: start;
+  margin-left: 2rem;
 }
 
 .song-list .show-more {
