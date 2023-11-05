@@ -41,7 +41,7 @@ function Navbar() {
           </Link>
           <Link className="nav-link" to={"/cart"}>
             <li className="nav-item">
-              <FaCartShopping size={20} className="cart-icon" />
+              CART
               {cartItems.length > 0 ? (
                 <p className="cart-items-count">{cartItems.length}</p>
               ) : null}

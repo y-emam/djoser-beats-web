@@ -5,12 +5,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import PlayerBar from "./components/playBar";
-import initializeFirebase from "./config/firebase";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-
-initializeFirebase();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

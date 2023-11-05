@@ -2,7 +2,6 @@ import "./songList.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSong, startPlaying } from "../redux/reducers/playList";
-import { FaCartPlus } from "react-icons/fa6";
 
 function SongsList() {
   const playList = useSelector((state) => state.playList.value.playList);
@@ -35,7 +34,7 @@ function SongsList() {
           }}
           className="show-more grid-item"
         >
-          <FaCartPlus /> Show Packages
+          Show Packages
         </Link>
       </li>
     );

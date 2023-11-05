@@ -1,4 +1,4 @@
-import { FaInstagram, FaYoutube } from "react-icons/fa6";
+import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import "./footer.css";
 
@@ -42,6 +42,14 @@ function Footer() {
             href="https://www.youtube.com/@DjoserBeats"
           >
             <FaYoutube />
+          </a>
+          <a
+            className="link"
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.youtube.com/@DjoserBeats"
+          >
+            <FaTiktok />
           </a>
         </div>
       </div>

@@ -3,7 +3,6 @@ import Navbar from "../components/navbar";
 import "./home.css";
 import ContactForm from "../components/contactForm";
 import SongsList from "../components/songsList";
-import { Link } from "react-router-dom";
 import headerVideo from "../assets/home.mp4";
 import AboutSection from "../components/aboutSection";
 
@@ -16,16 +15,14 @@ function Home() {
           <source src={headerVideo} type="video/mp4" />
         </video>
         <div className="videoTag overlay"></div>
-        {/* <img src={require("../assets/wallpaper1.jpg")} alt="music-wallpaepr" /> */}
         <div className="image-content">
           <h1>Djoser Beats</h1>
           <p>Your Soundtrack, Your Way, Djoser Beats Today.</p>
-          <Link to={"/songs"}>Show Beats</Link>
         </div>
       </div>
       <SongsList />
       <AboutSection />
-      <ContactForm />
+      {/* <ContactForm /> */}
       <Footer />
     </div>
   );

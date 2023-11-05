@@ -1,11 +1,7 @@
 .song-list {
   padding: 2rem;
   text-align: center;
-}
-
-.song-list .song-item {
-  padding: 2rem;
-  width: 100%;
+  font-size: 0.75rem;
 }
 
 .song-list .song-item ul {
@@ -21,9 +17,8 @@
 
 .song-list .song-item img {
   cursor: pointer;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   object-fit: cover;
   border-width: 3;
@@ -44,14 +39,13 @@
 
 .song-list .show-more {
   cursor: pointer;
-  background-color: #643c92;
-  padding: 8px;
-  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+  padding: 0.5rem;
   box-shadow: 2px 2px 5px black;
-  color: var(--main-dark);
   font-weight: bold;
-  color: var(--main-light);
-  height: 3rem;
+  color: black;
+  height: 2.5rem;
   text-decoration: none;
   margin-top: 2rem;
 }

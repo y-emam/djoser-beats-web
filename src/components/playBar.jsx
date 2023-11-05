@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import "./playBar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -83,9 +83,9 @@ const PlayerBar = () => {
           audio.currentTime / 60
         )}:${
           Math.floor(audio.currentTime % 60) < 10
-            ? "0" + Math.floor(audio.currentTime)
+            ? "0" + Math.floor(audio.currentTime % 60)
             : Math.floor(audio.currentTime % 60)
-        } | ${currentPlayingSong.duration}`;
+        }`;
       }
     }, 1000);
 
@@ -99,7 +99,7 @@ const PlayerBar = () => {
         <img src={currentPlayingSong.imageUrl} alt="song-img" />
         <p>{currentPlayingSong.name}</p>
         <div>
-          <div>
+          <div className="buttons">
             <button onClick={toggleBackward}>
               <FaStepBackward />
             </button>
@@ -110,20 +110,24 @@ const PlayerBar = () => {
               <FaStepForward />
             </button>
           </div>
+          <div className="audio-bar">
+            <input
+              id="audio-seeker"
+              type="range"
+              min={0}
+              max={audio.duration}
+              value={audio.currentTime}
+              onChange={(e) => {
+                dispatch(seekToSecond(e.target.value));
+              }}
+            />
+          </div>
         </div>
-        <div className="audio-bar">
-          <input
-            id="audio-seeker"
-            type="range"
-            min={0}
-            max={audio.duration}
-            value={audio.currentTime}
-            onChange={(e) => {
-              dispatch(seekToSecond(e.target.value));
-            }}
-          />
-        </div>
-        <div id="audio-duration"></div>
+        <div id="audio-duration">{`${Math.floor(audio.currentTime / 60)}:${
+          Math.floor(audio.currentTime % 60) < 10
+            ? "0" + Math.floor(audio.currentTime)
+            : Math.floor(audio.currentTime % 60)
+        }`}</div>
       </div>
     </div>
   ) : (
