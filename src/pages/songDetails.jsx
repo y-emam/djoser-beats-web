@@ -19,7 +19,7 @@ function SongDetails() {
 
   const dispatch = useDispatch();
 
-  const packagesComponents = packages.map((songPackage) => {
+  const packagesComponents = packages.map((songPackage, ind) => {
     return (
       <div className="package-item" key={songPackage.name}>
         <div className="name-price">
@@ -32,9 +32,9 @@ function SongDetails() {
                   packageName: songPackage.name,
                   price: songPackage.price,
                   imageUrl: song.imageUrl,
+                  parentFolder: song.parentFolderUrl,
                 })
               );
-
               // TODO: change the button to view Cart
 
               // TODO: disable adding if it is in cart else it works

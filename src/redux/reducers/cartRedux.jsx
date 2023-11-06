@@ -5,6 +5,7 @@ const cartItem = {
   packageName: "",
   price: 0,
   imageUrl: "",
+  parentFolderUrl: "",
 };
 
 const initialState = {
@@ -18,6 +19,12 @@ export const cartRedux = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      for (let i = 0; i < state.value.items.length; i++) {
+        if (action.payload.songName === state.value.items[i].songName) {
+          return;
+        }
+      }
+
       state.value.items.push(action.payload);
     },
     removeFromCart: (state, action) => {

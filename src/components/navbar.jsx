@@ -4,7 +4,6 @@ import "../index.css";
 import "bootstrap/js/src/collapse.js";
 import "bootstrap/dist/js/bootstrap.bundle";
 import { Link } from "react-router-dom";
-import { FaCartShopping } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 
 function Navbar() {
