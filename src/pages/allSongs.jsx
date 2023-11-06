@@ -1,10 +1,13 @@
+import Footer from "../components/footer";
 import Navbar from "../components/navbar";
+import SongsList from "../components/songsList";
 
 function AllSongs() {
   return (
     <div>
       <Navbar />
-      All Songs
+      <SongsList isAllSongs={true} />
+      <Footer />
     </div>
   );
 }

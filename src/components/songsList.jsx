@@ -4,43 +4,45 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeSong, startPlaying } from "../redux/reducers/playList";
 import { useEffect } from "react";
 
-function SongsList() {
+function SongsList({ isAllSongs }) {
   const playList = useSelector((state) => state.playList.value.playList);
   const dispatch = useDispatch();
 
   const noSongsToShow = 10;
-  const songsComponents = playList.slice(0, noSongsToShow).map((song) => {
-    const handleSongClick = () => {
-      dispatch(changeSong(song));
-      dispatch(startPlaying());
-    };
+  const songsComponents = playList
+    .slice(0, isAllSongs ? playList.length : noSongsToShow)
+    .map((song) => {
+      const handleSongClick = () => {
+        dispatch(changeSong(song));
+        dispatch(startPlaying());
+      };
 
-    return (
-      <li className="song-item" key={song.name}>
-        <img
-          className="grid-item"
-          src={song.imageUrl}
-          alt="song-pic"
-          onClick={handleSongClick}
-        />
-        <p className="name grid-item" onClick={handleSongClick}>
-          {song.name}
-        </p>
-        <p className="duration grid-item">{song.duration}</p>
-        <p className="bpm grid-item">{song.bpm}</p>
-        <Link
-          to={{
-            pathname: "/songDetails",
-            // search: JSON.stringify(song),
-            hash: JSON.stringify(song),
-          }}
-          className="show-more grid-item"
-        >
-          Show Packages
-        </Link>
-      </li>
-    );
-  });
+      return (
+        <li className="song-item" key={song.name}>
+          <img
+            className="grid-item"
+            src={song.imageUrl}
+            alt="song-pic"
+            onClick={handleSongClick}
+          />
+          <p className="name grid-item" onClick={handleSongClick}>
+            {song.name}
+          </p>
+          <p className="duration grid-item">{song.duration}</p>
+          <p className="bpm grid-item">{song.bpm}</p>
+          <Link
+            to={{
+              pathname: "/songDetails",
+              // search: JSON.stringify(song),
+              hash: JSON.stringify(song),
+            }}
+            className="show-more grid-item"
+          >
+            Show Packages
+          </Link>
+        </li>
+      );
+    });
 
   return (
     <div className="song-list">
@@ -48,7 +50,7 @@ function SongsList() {
         "Loading Tracks..."
       ) : (
         <div>
-          <h1>Popular Beats</h1>
+          <h1>{isAllSongs ? "All Songs" : "Popular Beats"}</h1>
           <hr
             style={{
               color: "white",
@@ -67,14 +69,16 @@ function SongsList() {
               </li>
               {songsComponents}
             </ul>
-            <Link
-              to={{
-                pathname: "/songs",
-              }}
-              className="show-more grid-item"
-            >
-              Show More
-            </Link>
+            {isAllSongs ? null : (
+              <Link
+                to={{
+                  pathname: "/songs",
+                }}
+                className="show-more grid-item"
+              >
+                Show More
+              </Link>
+            )}
           </div>
         </div>
       )}

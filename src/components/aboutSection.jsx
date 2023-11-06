@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import "./aboutSection.css";
+import Footer from "./footer";
 
 function AboutSection() {
   useEffect(() => {

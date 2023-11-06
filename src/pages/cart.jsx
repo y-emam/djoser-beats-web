@@ -5,6 +5,7 @@ import { FaX } from "react-icons/fa6";
 import { removeFromCart } from "../redux/reducers/cartRedux";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { createOrder, onApprove, onCancel } from "../services/paypal";
+import Footer from "../components/footer";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.value.items);

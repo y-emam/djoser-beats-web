@@ -20,7 +20,7 @@ function Home() {
           <p>Your Soundtrack, Your Way, Djoser Beats Today.</p>
         </div>
       </div>
-      <SongsList />
+      <SongsList isAllSongs={false} />
       <AboutSection />
       {/* <ContactForm /> */}
       <Footer />
