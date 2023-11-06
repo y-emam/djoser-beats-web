@@ -3,9 +3,8 @@ import Navbar from "../components/navbar";
 import "./cart.css";
 import { FaX } from "react-icons/fa6";
 import { removeFromCart } from "../redux/reducers/cartRedux";
-import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
-import { createOrder, onApprove, onCancel } from "../services/paypal";
-import Footer from "../components/footer";
+import { PayPalButtons } from "@paypal/react-paypal-js";
+import { createOrder, onCancel } from "../services/paypal";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.value.items);
@@ -52,7 +51,11 @@ const CartPage = () => {
               <div className="paypal-button">
                 <PayPalButtons
                   onApprove={(data, actions) => {
-                    createOrder(data, actions, cartItems, "shit@shit.com");
+                    return actions.order.capture().then(function (details) {
+                      createOrder(cartItems, details.payer.email_address);
+                      // todo: Show a success message to your buyer
+                      // todo: tell him to check his email for the packages he bought
+                    });
                   }}
                   onError={(err) => {
                     console.log(`Mission Failed: ${err}`);
