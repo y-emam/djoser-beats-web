@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Navbar from "../components/navbar";
 import "./songDetails.css";
 import {
-  FaCartPlus,
   FaMicrophone,
   FaBroadcastTower,
   FaMusic,
@@ -25,6 +24,7 @@ function SongDetails() {
         <div className="name-price">
           <p className="name">{songPackage.name}</p>
           <button
+            className="add-package-button"
             onClick={() => {
               dispatch(
                 addToCart({
@@ -35,13 +35,10 @@ function SongDetails() {
                   parentFolder: song.parentFolderUrl,
                 })
               );
-              // TODO: change the button to view Cart
-
-              // TODO: disable adding if it is in cart else it works
-              // TODO: disabling means navigate to cart instead of adding
             }}
+            // TODo: change the style of the add button
           >
-            <FaCartPlus /> {Math.floor(songPackage.price).toFixed(2)}
+            {`$${Math.floor(songPackage.price).toFixed(2)}`}
           </button>
         </div>
         <div className="packages">

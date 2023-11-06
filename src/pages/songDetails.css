@@ -54,8 +54,16 @@
 }
 
 .song-details .package-item .packages {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.song-details .package-item .add-package-button {
+  border: none;
+  outline: none;
+  font-weight: bold;
+  height: 2.5rem;
+  padding: 0 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 4px white;
 }
