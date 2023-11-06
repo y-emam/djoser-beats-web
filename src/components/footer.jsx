@@ -47,7 +47,7 @@ function Footer() {
             className="link"
             target="_blank"
             rel="noreferrer"
-            href="https://www.youtube.com/@DjoserBeats"
+            href="https://www.tiktok.com/@djoserbeats"
           >
             <FaTiktok />
           </a>
