@@ -2,12 +2,14 @@ import "./songList.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSong, startPlaying } from "../redux/reducers/playList";
+import { useEffect } from "react";
 
 function SongsList() {
   const playList = useSelector((state) => state.playList.value.playList);
   const dispatch = useDispatch();
 
-  const songsComponents = playList.map((song) => {
+  const noSongsToShow = 10;
+  const songsComponents = playList.slice(0, noSongsToShow).map((song) => {
     const handleSongClick = () => {
       dispatch(changeSong(song));
       dispatch(startPlaying());
@@ -65,6 +67,14 @@ function SongsList() {
               </li>
               {songsComponents}
             </ul>
+            <Link
+              to={{
+                pathname: "/songs",
+              }}
+              className="show-more grid-item"
+            >
+              Show More
+            </Link>
           </div>
         </div>
       )}
