@@ -57,14 +57,23 @@
   padding: 0.5rem 1rem;
 }
 
-.about-section .first-section button {
-  background-color: black;
-  color: white;
+.about-section .show-more {
+  cursor: pointer;
+  font-size: 1rem;
+  background-color: white;
+  padding: 0.5rem;
+  box-shadow: 2px 2px 5px white;
+  font-weight: bold;
+  color: black;
+  height: 2.5rem;
+  text-decoration: none;
+  margin-top: 2rem;
 }
 
-.about-section .second-section button {
-  background-color: white;
-  color: black;
+.about-section .first-section .show-more {
+  background-color: black;
+  color: white;
+  box-shadow: 2px 2px 5px black;
 }
 
 .about-section img:hover {

@@ -22,7 +22,6 @@ function Home() {
       </div>
       <SongsList isAllSongs={false} />
       <AboutSection />
-      {/* <ContactForm /> */}
       <Footer />
     </div>
   );

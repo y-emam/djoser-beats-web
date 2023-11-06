@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./aboutSection.css";
-import Footer from "./footer";
+import { Link } from "react-router-dom";
 
 function AboutSection() {
   useEffect(() => {
@@ -28,20 +28,38 @@ function AboutSection() {
           alt=""
         />
         <div className="content hidden">
-          <h1>Best Tracks for Your Song</h1>
+          <h1>Take Your Track to the Next Level</h1>
           <p>
             {" "}
-            Get Tracks to fit your adsfad sf adsf adsf asdf adsf asdf asdf asdf
-            asd song and get famous with it
+            Discover the path to excellence and elevate your track's performance
+            to new heights
           </p>
-          <button>Some Shit</button>
+          <Link
+            to={{
+              pathname: "/songs",
+            }}
+            className="show-more grid-item"
+          >
+            Show Beats
+          </Link>
         </div>
       </div>
       <div className="second-section">
         <div className="content hidden">
-          <h1>For Social Media</h1>
-          <p>get the tracks to get your social media videos viral</p>
-          <button>Some Shit</button>
+          <h1>Unlock the Secrets to Social Media Stardom</h1>
+          <p>
+            Discover the hidden techniques and strategies that will propel your
+            social media presence to stardom, ensuring your content shines
+            brightly in the digital galaxy.
+          </p>
+          <Link
+            to={{
+              pathname: "/about",
+            }}
+            className="show-more  grid-item"
+          >
+            About Us
+          </Link>
         </div>
         <img
           className="hidden img"
