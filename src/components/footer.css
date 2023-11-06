@@ -3,6 +3,7 @@
   flex-direction: row;
   padding: 1rem 2rem;
   justify-content: space-around;
+  background-color: black;
 }
 
 .footer .sitemap,

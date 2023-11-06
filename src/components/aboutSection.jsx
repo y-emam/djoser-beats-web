@@ -1,15 +1,33 @@
+import { useEffect } from "react";
 import "./aboutSection.css";
 
 function AboutSection() {
-  // todo: ask yehia if these are his services
+  useEffect(() => {
+    const observer = new IntersectionObserver((enteries) => {
+      enteries.forEach((entry) => {
+        console.log(entry);
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          entry.target.classList.remove("hidden");
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll(".hidden");
+    hiddenElements.forEach((element) => {
+      observer.observe(element);
+    });
+  }, []);
+
   return (
     <div className="about-section">
       <div className="first-section">
         <img
+          className="hidden img"
           src={require("../assets/wallpaperflare.com_wallpaper (10).jpg")}
           alt=""
         />
-        <div className="content">
+        <div className="content hidden">
           <h1>Best Tracks for Your Song</h1>
           <p>
             {" "}
@@ -20,12 +38,16 @@ function AboutSection() {
         </div>
       </div>
       <div className="second-section">
-        <div className="content">
+        <div className="content hidden">
           <h1>For Social Media</h1>
           <p>get the tracks to get your social media videos viral</p>
           <button>Some Shit</button>
         </div>
-        <img src={require("../assets/wallpaper1.jpg")} alt="" />
+        <img
+          className="hidden img"
+          src={require("../assets/wallpaper1.jpg")}
+          alt=""
+        />
       </div>
     </div>
   );

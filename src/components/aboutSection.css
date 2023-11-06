@@ -24,22 +24,31 @@
 }
 
 .about-section img {
-  transition: all 0.3s ease-out;
+  transition: all 0.7s ease-out;
   width: 25rem;
   height: 20rem;
   object-fit: cover;
 }
 
 .about-section .first-section img {
-  box-shadow: 1rem 0.25rem 0 black, 0.25rem 1rem 0 black;
+  box-shadow: 0.125rem 0.125rem 1rem #246785, 0.125rem 0.125rem 1rem #246785;
 }
 
 .about-section .second-section img {
-  box-shadow: -1rem 0.25rem 0 white, -0.25rem 1rem 0 white;
+  box-shadow: -0.125rem 0.125rem 1rem #aa029a, -0.125rem 0.125rem 1rem #360ec6;
+}
+
+.about-section .img.hidden {
+  height: 0;
 }
 
 .about-section .content {
   max-width: 25rem;
+  transition: all 0.7s ease-out;
+}
+
+.about-section .content.hidden {
+  color: transparent;
 }
 
 .about-section button {
