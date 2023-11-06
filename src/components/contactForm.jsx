@@ -33,8 +33,8 @@ function ContactForm() {
       <h1>Contact</h1>
       <hr
         style={{
-          color: "white",
-          borderColor: "black",
+          color: "black",
+          borderColor: "white",
           margin: "1rem 5rem ",
         }}
       />
