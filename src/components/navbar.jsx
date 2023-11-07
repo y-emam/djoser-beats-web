@@ -35,9 +35,9 @@ function Navbar() {
           <Link className="nav-link" to={"/songs"}>
             <li className="nav-item">BEATS</li>
           </Link>
-          <Link className="nav-link" to={"/contacts"}>
+          {/* <Link className="nav-link" to={"/contacts"}>
             <li className="nav-item">CONTACT</li>
-          </Link>
+          </Link> */}
           <Link className="nav-link" to={"/cart"}>
             <li className="nav-item">
               CART
