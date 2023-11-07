@@ -54,11 +54,11 @@ function AboutSection() {
           </p>
           <Link
             to={{
-              pathname: "/about",
+              pathname: "/songs",
             }}
             className="show-more  grid-item"
           >
-            About Us
+            Show Beats
           </Link>
         </div>
         <img
