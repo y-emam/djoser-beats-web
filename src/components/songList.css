@@ -42,6 +42,12 @@
   align-self: center;
 }
 
+#play-button {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+
 .song-list .packages-button {
   width: 2.5rem;
   height: 2.5rem;
@@ -57,6 +63,9 @@
   color: black;
   height: 2.5rem;
   text-decoration: none;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 .song-list .name:hover {
@@ -81,6 +90,7 @@
   .song-list .packages-button {
     width: 1.5rem;
     height: 1.5rem;
+    display: flex;
   }
 
   .song-list .show-more.packages-button {

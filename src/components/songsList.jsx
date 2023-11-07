@@ -30,13 +30,23 @@ function SongsList({ isAllSongs }) {
           </p>
           <p className="duration grid-item">{song.duration}</p>
           <p className="bpm grid-item">{song.bpm}</p>
-          <button
+          {/* <button
             className="show-more packages-button grid-item"
             id="play-button"
             onClick={handleSongClick}
           >
+            <FaPlay className="icon" fontSize={"1rem"} fontWeight={"bold"} />
+          </button> */}
+          <Link
+            to={{
+              pathname: "/songs",
+            }}
+            className="show-more packages-button grid-item"
+            onClick={handleSongClick}
+            id="play-button"
+          >
             <FaPlay />
-          </button>
+          </Link>
           <Link
             to={{
               pathname: "/songDetails",
