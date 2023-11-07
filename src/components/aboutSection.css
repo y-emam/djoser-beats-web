@@ -79,3 +79,10 @@
 .about-section img:hover {
   box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 black;
 }
+
+@media only screen and (max-width: 750px) {
+  .about-section .img {
+    width: 20rem;
+    height: 20rem;
+  }
+}

@@ -1,7 +1,6 @@
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
 import "./home.css";
-import ContactForm from "../components/contactForm";
 import SongsList from "../components/songsList";
 import headerVideo from "../assets/home.mp4";
 import AboutSection from "../components/aboutSection";

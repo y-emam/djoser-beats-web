@@ -2,7 +2,7 @@ import "./songList.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSong, startPlaying } from "../redux/reducers/playList";
-import { useEffect } from "react";
+import { FaBars, FaCartShopping, FaPlay } from "react-icons/fa6";
 
 function SongsList({ isAllSongs }) {
   const playList = useSelector((state) => state.playList.value.playList);
@@ -30,15 +30,22 @@ function SongsList({ isAllSongs }) {
           </p>
           <p className="duration grid-item">{song.duration}</p>
           <p className="bpm grid-item">{song.bpm}</p>
+          <button
+            className="show-more packages-button grid-item"
+            id="play-button"
+            onClick={handleSongClick}
+          >
+            <FaPlay />
+          </button>
           <Link
             to={{
               pathname: "/songDetails",
               // search: JSON.stringify(song),
               hash: JSON.stringify(song),
             }}
-            className="show-more grid-item"
+            className="show-more packages-button grid-item"
           >
-            Show Packages
+            <FaCartShopping />
           </Link>
         </li>
       );
@@ -63,8 +70,8 @@ function SongsList({ isAllSongs }) {
               <li>
                 <p className="grid-item"> </p>
                 <p className="grid-item">Title</p>
-                <p className="grid-item">Duration</p>
-                <p className="grid-item">bpm</p>
+                <p className="duration grid-item">Duration</p>
+                <p className="bpm grid-item">bpm</p>
                 <p className="grid-item"> </p>
               </li>
               {songsComponents}

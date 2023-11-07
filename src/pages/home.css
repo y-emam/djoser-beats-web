@@ -34,3 +34,13 @@
   font-size: 1.5rem;
   font-style: italic;
 }
+
+@media only screen and (max-width: 750px) {
+  .home-header h1 {
+    font-size: 3rem;
+  }
+
+  .home-header p {
+    font-size: 1.5rem;
+  }
+}
