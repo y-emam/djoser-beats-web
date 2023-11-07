@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import Navbar from "../components/navbar";
+import NavbarComponent from "../components/navbar";
 import "./cart.css";
 import { FaX } from "react-icons/fa6";
 import { removeFromCart } from "../redux/reducers/cartRedux";
@@ -36,7 +36,7 @@ const CartPage = () => {
 
   return (
     <div className="cart-page">
-      <Navbar />
+      <NavbarComponent />
       {cartItems.length > 0 ? (
         <div>
           <div className="content">

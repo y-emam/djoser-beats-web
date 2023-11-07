@@ -1,11 +1,11 @@
 import ContactForm from "../components/contactForm";
 import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import NavbarComponent from "../components/navbar";
 
 function Contacts() {
   return (
     <div className="contacts">
-      <Navbar />
+      <NavbarComponent />
       <ContactForm />
       <Footer />
     </div>

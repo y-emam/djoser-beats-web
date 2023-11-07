@@ -1,11 +1,11 @@
 import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import NavbarComponent from "../components/navbar";
 import SongsList from "../components/songsList";
 
 function AllSongs() {
   return (
     <div>
-      <Navbar />
+      <NavbarComponent />
       <SongsList isAllSongs={true} />
       <Footer />
     </div>

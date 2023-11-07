@@ -1,9 +1,9 @@
-import Navbar from "../components/navbar";
+import NavbarComponent from "../components/navbar";
 
 function NoPage() {
   return (
     <div className="no-page">
-      <Navbar />
+      <NavbarComponent />
       404 PAGE NOT FOUND
     </div>
   );

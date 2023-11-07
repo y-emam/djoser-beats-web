@@ -1,10 +1,10 @@
 import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import NavbarComponent from "../components/navbar";
 
 function About() {
   return (
     <div className="about-page">
-      <Navbar />
+      <NavbarComponent />
       About
       <Footer />
     </div>

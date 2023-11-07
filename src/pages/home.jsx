@@ -1,5 +1,5 @@
 import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import NavbarComponent from "../components/navbar";
 import "./home.css";
 import SongsList from "../components/songsList";
 import headerVideo from "../assets/home.mp4";
@@ -8,7 +8,7 @@ import AboutSection from "../components/aboutSection";
 function Home() {
   return (
     <div className="home-page">
-      <Navbar />
+      <NavbarComponent />
       <div className="home-header">
         <video className="videoTag" autoPlay loop muted>
           <source src={headerVideo} type="video/mp4" />

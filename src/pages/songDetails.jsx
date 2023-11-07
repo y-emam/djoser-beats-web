@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import Navbar from "../components/navbar";
+import NavbarComponent from "../components/navbar";
 import "./songDetails.css";
 import {
   FaMicrophone,
@@ -68,7 +68,7 @@ function SongDetails() {
 
   return (
     <div className="song-details">
-      <Navbar />
+      <NavbarComponent />
       {song._id ? (
         <div>
           <div className="header">

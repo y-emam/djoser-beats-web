@@ -1,16 +1,15 @@
 import { Image } from "react-bootstrap";
 import logo from "../assets/logo.jpg";
 import "../index.css";
-import "bootstrap/js/src/collapse.js";
-import "bootstrap/dist/js/bootstrap.bundle";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Navbar from "react-bootstrap/Navbar";
 
-function Navbar() {
+function NavbarComponent() {
   const cartItems = useSelector((state) => state.cart.value.items);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark ">
+    <Navbar className="navbar navbar-expand-lg navbar-dark ">
       <Link className="navbar-brand" to={"/"}>
         <Image src={logo} width={50} className="navbar-logo" />
       </Link>
@@ -48,8 +47,8 @@ function Navbar() {
           </Link>
         </ul>
       </div>
-    </nav>
+    </Navbar>
   );
 }
 
-export default Navbar;
+export default NavbarComponent;
