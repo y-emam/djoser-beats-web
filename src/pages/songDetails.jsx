@@ -16,6 +16,10 @@ function SongDetails() {
   const song = JSON.parse(decodeURIComponent(location.hash.slice(1)));
   const packages = song.packages;
 
+  //  todo: make the packages a global variable;
+
+  // const packages = [];
+
   const dispatch = useDispatch();
 
   const packagesComponents = packages.map((songPackage, ind) => {
