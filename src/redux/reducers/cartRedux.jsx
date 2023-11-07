@@ -20,7 +20,10 @@ export const cartRedux = createSlice({
   reducers: {
     addToCart: (state, action) => {
       for (let i = 0; i < state.value.items.length; i++) {
-        if (action.payload.songName === state.value.items[i].songName) {
+        if (
+          action.payload.songName === state.value.items[i].songName &&
+          action.payload.packageName === state.value.items[i].packageName
+        ) {
           return;
         }
       }

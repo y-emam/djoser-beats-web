@@ -59,6 +59,7 @@ const CartPage = () => {
                   }}
                   onError={(err) => {
                     console.log(`Mission Failed: ${err}`);
+                    alert(`Failed to pay: ${err}`);
                   }}
                   onCancel={onCancel}
                 />
