@@ -67,3 +67,11 @@
   border-radius: 5px;
   box-shadow: 0 0 4px white;
 }
+
+.popup {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  font-weight: bold;
+  /* transform: translateX(-1rem); */
+}

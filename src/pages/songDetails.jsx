@@ -40,7 +40,6 @@ function SongDetails() {
                 })
               );
             }}
-            // TODo: change the style of the add button
           >
             {`$${Math.floor(songPackage.price).toFixed(2)}`}
           </button>
