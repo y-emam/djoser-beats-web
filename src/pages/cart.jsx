@@ -29,7 +29,7 @@ const CartPage = () => {
           dispatch(removeFromCart(item));
         }}
       >
-        <FaX />
+        <FaX className="x-button" />
       </button>
     </div>
   ));

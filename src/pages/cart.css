@@ -1,19 +1,20 @@
 .cart-page .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   font-weight: bold;
+  padding: 1rem;
+  align-items: center;
 }
 
 .cart-page .content .item {
   box-shadow: 1px 1px 4px white;
-  min-width: 50rem;
+  width: 90vw;
   display: flex;
   flex-direction: row;
   justify-content: start;
   padding: 1rem;
   align-items: center;
-  margin: 1rem;
 }
 
 .cart-page .content img {
@@ -34,9 +35,6 @@
   font-size: 2rem;
 }
 
-.cart-page .content .item-details .package-name {
-}
-
 .cart-page .content .item .price {
   margin-left: auto;
   font-size: 1.5rem;
@@ -53,13 +51,10 @@
 
 .cart-page .checkout-list {
   box-shadow: 1px 1px 4px white;
-  min-width: 20rem;
-  width: auto;
+  max-width: 30rem;
+  width: 100%;
   height: 300px;
-  margin-top: 1rem;
-}
-
-.cart-page .checkout-list h2 {
+  margin-top: 4rem;
 }
 
 .cart-page .checkout-list hr {
@@ -86,4 +81,35 @@
 .cart-page .paypal-button {
   margin: 1rem;
   align-self: flex-end;
+}
+
+@media only screen and (max-width: 750px) {
+  .cart-page .content img {
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 1rem;
+    margin-right: 1rem;
+  }
+
+  .cart-page .content .item-details .song-name {
+    font-size: 1rem;
+  }
+
+  .cart-page .content .item-details .song-name {
+    font-size: 1rem;
+  }
+
+  .cart-page .content .item .price {
+    margin-left: auto;
+    font-size: 1rem;
+  }
+
+  .cart-page .item-details .package-name {
+    font-size: 0.75rem;
+  }
+
+  .cart-page .x-button {
+    font-size: 1rem;
+  }
 }
