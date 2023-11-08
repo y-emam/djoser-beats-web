@@ -25,6 +25,10 @@ code {
   background-color: var(--main-dark);
   box-shadow: 1px 1px 4px white;
   width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .navbar .nav-item {
   font-weight: bold;

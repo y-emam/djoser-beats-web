@@ -7,9 +7,17 @@ import {
   FaMusic,
   FaDollarSign,
   FaCalendar,
+  FaRadiation,
+  FaSignal,
+  FaAudioDescription,
+  FaNetworkWired,
+  FaFileAudio,
+  FaStream,
+  FaRegFileAudio,
 } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import { addToCart } from "../redux/reducers/cartRedux";
+import SongPackages from "../constants/songPackages";
 
 function SongDetails() {
   const location = useLocation();
@@ -22,7 +30,7 @@ function SongDetails() {
 
   const dispatch = useDispatch();
 
-  const packagesComponents = packages.map((songPackage, ind) => {
+  const packagesComponents = SongPackages.map((songPackage, ind) => {
     return (
       <div className="package-item" key={songPackage.name}>
         <div className="name-price">
@@ -52,10 +60,13 @@ function SongDetails() {
             <FaDollarSign /> {songPackage.usages.distributions}
           </p>
           <p>
-            <FaBroadcastTower /> {songPackage.usages.audioStreams}
+            <FaStream /> {songPackage.usages.audioStreams}
           </p>
           <p>
             <FaMusic /> {songPackage.usages.musicVideo}
+          </p>
+          <p>
+            <FaBroadcastTower /> {songPackage.usages.radio}
           </p>
           <p>
             <FaMicrophone /> {songPackage.usages.livePerformances}
