@@ -7,13 +7,7 @@ import {
   FaMusic,
   FaDollarSign,
   FaCalendar,
-  FaRadiation,
-  FaSignal,
-  FaAudioDescription,
-  FaNetworkWired,
-  FaFileAudio,
   FaStream,
-  FaRegFileAudio,
 } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import { addToCart } from "../redux/reducers/cartRedux";
@@ -22,7 +16,6 @@ import SongPackages from "../constants/songPackages";
 function SongDetails() {
   const location = useLocation();
   const song = JSON.parse(decodeURIComponent(location.hash.slice(1)));
-  const packages = song.packages;
 
   //  todo: make the packages a global variable;
 

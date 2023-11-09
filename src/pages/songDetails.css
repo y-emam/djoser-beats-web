@@ -8,12 +8,18 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: center;
+  text-align: center;
   padding: 12px 0;
-  margin-right: 200px;
+  margin: 0 auto;
 }
 
 .song-details .header .content {
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
 }
 
 .song-details .header img {
@@ -74,4 +80,10 @@
   padding: 1rem;
   font-weight: bold;
   /* transform: translateX(-1rem); */
+}
+
+@media only screen and (max-width: 750px) {
+  .song-details .header {
+    flex-direction: column;
+  }
 }

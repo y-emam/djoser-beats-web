@@ -35,7 +35,7 @@ export const playListSlice = createSlice({
       if (state.value.currentPlayingSong === undefined) {
         console.log("in");
         state.value.playList.forEach((song) => {
-          if (song.mp3Url === state.value.audio.src)
+          if (song.mp3EditUrl === state.value.audio.src)
             state.value.currentPlayingSong = song;
         });
       }
@@ -49,7 +49,7 @@ export const playListSlice = createSlice({
           if (song._id === songInp._id) {
             state.value.currentPlayingSong = songInp;
             state.value.currentPlayingSongInd = ind;
-            state.value.audio.src = state.value.currentPlayingSong.mp3Url;
+            state.value.audio.src = state.value.currentPlayingSong.mp3EditUrl;
             state.value.currentTime = 0;
             return;
           }
@@ -62,7 +62,7 @@ export const playListSlice = createSlice({
           state.value.playList[--state.value.currentPlayingSongInd];
 
         state.value.isPlaying = true;
-        state.value.audio.src = state.value.currentPlayingSong.mp3Url;
+        state.value.audio.src = state.value.currentPlayingSong.mp3EditUrl;
         state.value.currentTime = 0;
       }
     },
@@ -72,7 +72,7 @@ export const playListSlice = createSlice({
           state.value.playList[++state.value.currentPlayingSongInd];
 
         state.value.isPlaying = true;
-        state.value.audio.src = state.value.currentPlayingSong.mp3Url;
+        state.value.audio.src = state.value.currentPlayingSong.mp3EditUrl;
         state.value.currentTime = 0;
       }
     },
