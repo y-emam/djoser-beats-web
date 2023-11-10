@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+You Can Open the Website from this [URL](https://djoser-beats.web.app/).
 
 ## Available Scripts
 
