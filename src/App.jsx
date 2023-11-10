@@ -7,6 +7,8 @@ import NoPage from "./pages/noPage";
 import CartPage from "./pages/cart";
 import SongDetails from "./pages/songDetails";
 import About from "./pages/About";
+import OnError from "./pages/onError";
+import OnApprove from "./pages/onApprove";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/SongDetails" element={<SongDetails />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/onApprove" element={<OnApprove />} />
+        <Route path="/onError" element={<OnError />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

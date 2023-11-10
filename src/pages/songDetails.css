@@ -79,7 +79,6 @@
   color: black;
   padding: 1rem;
   font-weight: bold;
-  /* transform: translateX(-1rem); */
 }
 
 @media only screen and (max-width: 750px) {
