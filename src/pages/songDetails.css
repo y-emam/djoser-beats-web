@@ -54,6 +54,13 @@
   font-weight: bold;
   font-size: 24px;
 }
+
+.song-details .package-item .downloadable-files {
+  display: flex;
+  align-items: start;
+  margin-left: 2rem;
+}
+
 .song-details .package-item .packages p {
   min-width: 33.3%;
   padding: 12px 0;

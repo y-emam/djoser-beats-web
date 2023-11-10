@@ -45,6 +45,9 @@ function SongDetails() {
             {`$${Math.floor(songPackage.price).toFixed(2)}`}
           </button>
         </div>
+        <div className="downloadable-files">
+          <p>{songPackage.files}</p>
+        </div>
         <div className="packages">
           <p>
             <FaMicrophone /> {songPackage.usages.musicRecording}

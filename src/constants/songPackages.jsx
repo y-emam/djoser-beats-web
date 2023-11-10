@@ -2,6 +2,7 @@ const SongPackages = [
   {
     name: "Basic License",
     price: 25,
+    files: "MP3",
     usages: {
       musicRecording: "USED FOR MUSIC RECORDING",
       distributions: "DISTRIBUTE UP TO 2,000 COPIES",
@@ -14,6 +15,7 @@ const SongPackages = [
   {
     name: "Premium License",
     price: 45,
+    files: "MP3, WAV",
     usages: {
       musicRecording: "USED FOR MUSIC RECORDING",
       distributions: "DISTRIBUTE UP TO 10,000 COPIES",
@@ -26,6 +28,7 @@ const SongPackages = [
   {
     name: "Premium Plus License",
     price: 75,
+    files: "MP3, WAV, STEMS",
     usages: {
       musicRecording: "USED FOR MUSIC RECORDING",
       distributions: "DISTRIBUTE UP TO UNLIMITED COPIES",
@@ -38,6 +41,7 @@ const SongPackages = [
   {
     name: "Unlimited License",
     price: 500,
+    files: "MP3, WAV, STEMS",
     usages: {
       musicRecording: "USED FOR MUSIC RECORDING",
       distributions: "DISTRIBUTE UP TO UNLIMITED COPIES",
