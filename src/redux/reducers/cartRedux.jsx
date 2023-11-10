@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { createSlice } from "@reduxjs/toolkit";
 
-const cartItem = {
+let cartItem = {
   songName: "",
   packageName: "",
   price: 0,

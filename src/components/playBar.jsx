@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { FaPause, FaPlay, FaStepForward, FaStepBackward } from "react-icons/fa";
 import "./playBar.css";

@@ -2,7 +2,7 @@ import "./songList.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSong, startPlaying } from "../redux/reducers/playList";
-import { FaBars, FaCartShopping, FaPlay } from "react-icons/fa6";
+import { FaCartShopping, FaPlay } from "react-icons/fa6";
 
 function SongsList({ isAllSongs }) {
   const playList = useSelector((state) => state.playList.value.playList);
