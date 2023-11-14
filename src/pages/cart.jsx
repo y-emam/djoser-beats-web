@@ -53,7 +53,7 @@ const CartPage = () => {
                   onApprove={(data, actions) => {
                     return actions.order.capture().then(function (details) {
                       createOrder(cartItems, details.payer.email_address);
-                      // todo: Show a success message to your buyer
+                      // todo:  Show a success message to your buyer
                       // todo: tell him to check his email for the packages he bought
                       alert("Payment Done: Check Email You Used for Payment");
                     });
