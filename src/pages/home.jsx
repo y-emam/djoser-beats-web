@@ -4,8 +4,14 @@ import "./home.css";
 import SongsList from "../components/songsList";
 import headerVideo from "../assets/home.mp4";
 import AboutSection from "../components/aboutSection";
+import { useEffect } from "react";
+import ReactGA from "react-ga";
 
 function Home() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
+
   return (
     <div className="home-page">
       <NavbarComponent />

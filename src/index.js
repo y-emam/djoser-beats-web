@@ -8,6 +8,10 @@ import PlayerBar from "./components/playBar";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import ReactGA from "react-ga";
+
+// YOUR_OWN_TRACKING_ID
+ReactGA.initialize(process.env.REACT_APP_TRACKING_ID);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
