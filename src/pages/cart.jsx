@@ -5,6 +5,8 @@ import { FaX } from "react-icons/fa6";
 import { removeFromCart } from "../redux/reducers/cartRedux";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { createOrder, onCancel } from "../services/paypal";
+import ReactGA from "react-ga";
+import { useEffect } from "react";
 
 const CartPage = () => {
   const cartItems = useSelector((state) => state.cart.value.items);
@@ -15,6 +17,10 @@ const CartPage = () => {
     state.cart.value.items.forEach((item) => (price += item.price));
     return price;
   });
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
   const cartItemsComponents = cartItems.map((item) => (
     <div className="item" key={item.songName + item.packageName}>
