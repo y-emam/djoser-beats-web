@@ -13,8 +13,8 @@ const SongPackages = [
     },
   },
   {
-    name: "Premium License",
-    price: 45,
+    name: "Standard License",
+    price: 50,
     files: "MP3, WAV",
     usages: {
       musicRecording: "USED FOR MUSIC RECORDING",
@@ -26,8 +26,8 @@ const SongPackages = [
     },
   },
   {
-    name: "Premium Plus License",
-    price: 75,
+    name: "Premium License",
+    price: 100,
     files: "MP3, WAV, STEMS",
     usages: {
       musicRecording: "USED FOR MUSIC RECORDING",
@@ -39,7 +39,7 @@ const SongPackages = [
     },
   },
   {
-    name: "Unlimited License",
+    name: "Exclusive License",
     price: 500,
     files: "MP3, WAV, STEMS",
     usages: {
