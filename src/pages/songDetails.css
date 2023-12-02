@@ -68,7 +68,8 @@
 
 .song-details .package-item .packages {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
+  padding: 1rem;
 }
 
 .song-details .package-item .add-package-button {
