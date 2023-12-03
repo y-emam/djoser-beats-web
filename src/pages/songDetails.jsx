@@ -12,6 +12,7 @@ import {
 import { useLocation } from "react-router-dom";
 import { addToCart } from "../redux/reducers/cartRedux";
 import SongPackages from "../constants/songPackages";
+import ShowMore from "../components/showMore";
 
 function SongDetails() {
   const location = useLocation();
@@ -48,26 +49,29 @@ function SongDetails() {
         <div className="downloadable-files">
           <p>{songPackage.files}</p>
         </div>
-        <div className="packages">
-          <p>
-            <FaMicrophone /> {songPackage.usages.musicRecording}
-          </p>
-          <p>
-            <FaDollarSign /> {songPackage.usages.distributions}
-          </p>
-          <p>
-            <FaStream /> {songPackage.usages.audioStreams}
-          </p>
-          <p>
-            <FaMusic /> {songPackage.usages.musicVideo}
-          </p>
-          <p>
-            <FaBroadcastTower /> {songPackage.usages.radio}
-          </p>
-          <p>
-            <FaMicrophone /> {songPackage.usages.livePerformances}
-          </p>
-        </div>
+
+        <ShowMore>
+          <div className="packages">
+            <p>
+              <FaMicrophone /> {songPackage.usages.musicRecording}
+            </p>
+            <p>
+              <FaDollarSign /> {songPackage.usages.distributions}
+            </p>
+            <p>
+              <FaStream /> {songPackage.usages.audioStreams}
+            </p>
+            <p>
+              <FaMusic /> {songPackage.usages.musicVideo}
+            </p>
+            <p>
+              <FaBroadcastTower /> {songPackage.usages.radio}
+            </p>
+            <p>
+              <FaMicrophone /> {songPackage.usages.livePerformances}
+            </p>
+          </div>
+        </ShowMore>
       </div>
     );
   });
