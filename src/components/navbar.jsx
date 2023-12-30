@@ -11,7 +11,7 @@ function NavbarComponent() {
   return (
     <Navbar className="navbar navbar-expand-lg navbar-dark ">
       <Link className="navbar-brand" to={"/"}>
-        <Image src={logo} width={50} className="navbar-logo" />
+        <Image loading={"lazy"} src={logo} width={50} className="navbar-logo" />
       </Link>
 
       <button

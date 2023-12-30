@@ -24,7 +24,7 @@ const CartPage = () => {
 
   const cartItemsComponents = cartItems.map((item) => (
     <div className="item" key={item.songName + item.packageName}>
-      <img src={item.imageUrl} alt="song-img" />
+      <img src={item.imageUrl} loading={"lazy"} alt="song-img" />
       <div className="item-details">
         <p className="song-name">{item.songName}</p>
         <p className="package-name">{item.packageName}</p>
