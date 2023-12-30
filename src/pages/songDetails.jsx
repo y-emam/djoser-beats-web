@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 import { addToCart } from "../redux/reducers/cartRedux";
 import SongPackages from "../constants/songPackages";
 import ShowMore from "../components/showMore";
+import Loader from "../components/loader";
 
 function SongDetails() {
   const location = useLocation();
@@ -97,7 +98,7 @@ function SongDetails() {
           <div className="packages">{packagesComponents}</div>
         </div>
       ) : (
-        "Loading..."
+        <Loader />
       )}
     </div>
   );

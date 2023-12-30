@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSong, startPlaying } from "../redux/reducers/playList";
 import { FaCartShopping, FaPlay } from "react-icons/fa6";
+import Loader from "./loader";
 
 function SongsList({ isAllSongs }) {
   const playList = useSelector((state) => state.playList.value.playList);
@@ -64,7 +65,7 @@ function SongsList({ isAllSongs }) {
   return (
     <div className="song-list">
       {playList.length === 0 ? (
-        "Loading Tracks..."
+        <Loader />
       ) : (
         <div>
           <h1>{isAllSongs ? "All Songs" : "Popular Beats"}</h1>
