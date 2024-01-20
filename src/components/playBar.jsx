@@ -111,7 +111,8 @@ const PlayerBar = () => {
               <FaStepForward />
             </button>
           </div>
-          <div className="audio-bar">
+          {/* This is audio seaker */}
+          {/* <div className="audio-bar">
             <input
               id="audio-seeker"
               type="range"
@@ -122,7 +123,7 @@ const PlayerBar = () => {
                 dispatch(seekToSecond(e.target.value));
               }}
             />
-          </div>
+          </div> */}
         </div>
         <div id="audio-duration">{`${Math.floor(audio.currentTime / 60)}:${
           Math.floor(audio.currentTime % 60) < 10
